@@ -1,5 +1,6 @@
 // dependencies
 const express = require('express');
+const path = require('path');
 
 // instantiates server
 const app = express();
@@ -7,10 +8,17 @@ const PORT = process.env.PORT || 3001;
 
 const sequelize = require('./config/connection');
 
+// app.get('/', (req, res) => {
+//     res.sendFile(path.join(__dirname, 'public', 'javascript/test.html'));
+// })
+
+// connects to static files
+app.use(express.static(path.join(__dirname, 'javascript/public')));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// instructs server to listen for requests; 'sync' method connects models to db tables and if tables do not exist Sequelize will create them; 'force: boolean' determines whether db tables will be dropped and recreated on startup
+// instructs server to listen for requests; 'sync' method connects models to db tables and will create tables if non-existant; 'force: boolean' determines whether to drop and recreate db tables on startup
 sequelize.sync({ force: true }).then(() => {
-    app.listen(PORT, () => console.log('Now listening.'));
+    app.listen(PORT, () => console.log(`Now listening on port ${PORT}.`));
 });
