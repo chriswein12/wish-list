@@ -6,6 +6,7 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// connects to db
 const sequelize = require('./config/connection');
 
 // connects to static files
