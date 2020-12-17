@@ -1,9 +1,9 @@
-// file packages contents of 'controllers' folder for importation to server.js
+// package controllers for importation by server.js
 
 const router = require('express').Router();
 
-const htmlRoutes = require('./html-routes.js');
-const apiRoutes = require('./apiRoutes.js');
+const htmlRoutes = require('./htmlRoutes');
+const apiRoutes = require('./apiRoutes');
 
 router.use('/', htmlRoutes);
 router.use('/api', apiRoutes);
