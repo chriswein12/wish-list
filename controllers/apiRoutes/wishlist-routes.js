@@ -2,24 +2,22 @@
 const router = require('express').Router();
 // const { User, Wishlist } = require('../../models');
 
-// (‘/wishlist/’) returns list of wishlist-names and/or user-names
+// returns all wishlists
 router.get('/', (req, res) => {
-    console.log('writing to user-wishlist-page with wishlist data');
-    res.send('wishlist template data')
+    console.log('route returns all wishlists');
+    res.send('wishlists')
 })
 
-
-// router.get(‘/:id’) - returns selected wishlist with all items/item info
-router.get('/', (req, res) => {
-    console.log('writing wishlist data');
-    res.send('wishlist template data')
+// returns selected wishlist
+router.get('/:id', (req, res) => {
+    console.log('route returns one wishlist');
+    res.send('wishlist data')
 })
 
-
-// router.post(‘/’) - returns data-entry fields for posting new items to wishlist
+// create new wishlist
 router.post('/', (req, res) => {
-    console.log('writing wishlist data');
-    res.send('wishlist template data')
+    console.log('route creates new wishlist');
+    res.send('enter wishlist data')
 })
 
 

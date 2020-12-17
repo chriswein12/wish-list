@@ -26,7 +26,6 @@ router.post( '/login', (req, res) => {
     res.send('enter login data')
 })
 
-
 // ends session
 router.post( '/logout', (req, res) => {
     console.log("route ends session")
