@@ -16,6 +16,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // instructs server to listen for requests; 'sync' method connects models to db tables and will create tables if non-existant; 'force: boolean' determines whether to drop and recreate db tables on startup
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log(`Now listening on port ${PORT}.`));
 });
