@@ -1,38 +1,36 @@
 const router = require('express').Router();
 // const { User, Wishlist } = require('../../models')
 
-// (‘user/:id’) - returns user’s info and wishlist/s
-router.get( '/:id', (req, res) => {
-    console.log("writing to user's wishlist page")
-    res.send('user info and landing page template')
+// returns user list
+router.get( '/', (req, res) => {
+    console.log("route returns list of all users")
+    res.send('user list')
 })
 
-// (‘user/:id’) - returns user’s info and wishlist/s
+// returns single user's info
 router.get( '/:id', (req, res) => {
-    console.log("writing to user's wishlist page")
-    res.send('user info and landing page template')
+    console.log("route returns individual user info")
+    res.send('user data')
 })
 
-
-// (‘user/’) - returns user sign-up fields
+// returns user sign-up fields
 router.post( '/', (req, res) => {
-    console.log("writing to landing page with signup data")
-    res.send('user signup template')
-
+    console.log("route creates new user")
+    res.send('enter sign-up info')
 })
 
-
-// (‘user/login’) - returns user login
+// returns user login
 router.post( '/login', (req, res) => {
-    console.log("writing to user's wishlist page")
-    res.send('user login data')
+    // expects {email: 'sam@mail.com', password: '123456'}
+    console.log("route authorizes user login")
+    res.send('enter login data')
 })
 
 
-// (‘user/logout’) - ends session
+// ends session
 router.post( '/logout', (req, res) => {
-    console.log("writing to user's wishlist page")
-    res.send('landing page template')
+    console.log("route ends session")
+    res.send('you are now logged out')
 })
 
 

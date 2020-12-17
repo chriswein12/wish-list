@@ -3,17 +3,22 @@ const router = require('express').Router();
 const sequelize = require('../../config/connection');
 // const { User, Wishlist } = require('../../models');
 
-// returns homepage
+// returns landing page
 router.get('/', (req, res) => {
-    console.log('writing to home page')
-    res.send('home page template')
+    console.log('route returns landing page')
+    res.send('landing page template')
 })
 
-
-// returns login/signup page or user’s page if there’s an active session
+// returns login/signup page or user’s homepage if there’s an active session
 router.get('/login', (req, res) => {
-    console.log('writing to user login modal')
-    res.send('access login modal')
+    console.log('route returns user login modal')
+    res.send('login modal')
+
+    // if (req.session.loggedIn) {
+    //     res.redirect('/');
+    //     return;
+    // }
+    // res.render('login');    
 })
 
 // 
