@@ -1,6 +1,6 @@
 // file contains wishlist-routes
 const router = require('express').Router();
-// const { User, Wishlist } = require('../../models');
+// const { Users, Wishlists, Items } = require('../../models');
 
 // returns all wishlists
 router.get('/', (req, res) => {

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-// const { User, Wishlist } = require('../../models')
+// const { Users, Wishlists, Items } = require('../../models')
 
 // returns user list
 router.get( '/', (req, res) => {

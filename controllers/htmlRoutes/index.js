@@ -2,10 +2,10 @@
 
 const router = require('express').Router();
 
-const landingPageRoutes = require('./landingpage-routes.js');
-const homePageRoutes = require('./homepage-routes.js');
+const homepageRoutes = require('./homepage-routes.js');
+const dashboardRoutes = require('./dashboard-routes.js');
 
-router.use('/', landingPageRoutes);
-router.use('/home', homePageRoutes);
+router.use('/', homepageRoutes);
+router.use('/home', dashboardRoutes);
 
 module.exports = router;

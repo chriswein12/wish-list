@@ -4,8 +4,10 @@ const router = require('express').Router();
 
 const userRoutes = require('./user-routes.js');
 const wishlistRoutes = require('./wishlist-routes.js');
+const itemRoutes = require('./item-routes.js');
 
 router.use('/users', userRoutes);
-router.use('/wishlist', wishlistRoutes);
+router.use('/wishlists', wishlistRoutes);
+router.use('/items', itemRoutes);
 
 module.exports = router;
