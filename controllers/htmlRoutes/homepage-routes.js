@@ -7,6 +7,9 @@ const sequelize = require('../../config/connection');
 router.get('/', (req, res) => {
     console.log('route returns home page')
     res.send('home page template')
+    // console.log('res.body: ', res.body)
+    // res.render('homepage');
+    
 })
 
 // returns login/signup page or user’s dashboard if there’s an active session

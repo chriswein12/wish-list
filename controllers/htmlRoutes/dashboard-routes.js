@@ -7,6 +7,9 @@ const sequelize = require('../../config/connection');
 router.get('/', (req, res) => {
     console.log('route returns dashboard')
     res.send('dashboard template')
+    // console.log('res.body: ', res.body)
+    // res.render('homepage');
+
 })
 
 // ends session
