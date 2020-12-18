@@ -1,32 +1,33 @@
 // npm dependencies
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
-// const session = require('express-session');
+const session = require('express-session');
 // const exphbs = require('express-handlebars');
 
 // instantiate server
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// connect to db and store sessions
+// connect to db and set up/store sessions
 const sequelize = require('./config/connection');
-// const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 // define session data
-// const sess = {
-//     secret: process.env.SECRET,
-//     cookie: {},
-//     resave: false,
-//     saveUninitialized: true,
-//     store: new SequelizeStore({
-//         db: sequelize
-//     })
-// };
+const sess = {
+    secret: process.env.SECRET,
+    cookie: {},
+    resave: false,
+    saveUninitialized: true,
+    store: new SequelizeStore({
+        db: sequelize
+    })
+};
 
 // const helpers = require('./utils/helpers');
 // const hbs = exphbs.create({});
 
-// app.use(session(sess));
+app.use(session(sess));
 
 // app.engine('handlebars', hbs.engine);
 // app.set('view engine', 'handlebars');
