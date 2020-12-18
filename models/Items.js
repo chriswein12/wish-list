@@ -31,7 +31,7 @@ Items.init(
             allowNull: true,
             validate:{ isUrl: true }
         },
-        fescription: {
+        description: {
             type: DataTypes.STRING,
             allowNull: true
         },
