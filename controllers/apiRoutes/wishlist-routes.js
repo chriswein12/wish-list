@@ -55,7 +55,7 @@ router.post('/', (req, res) => {
     });
 })
 
-//Deleteing wishlist. 
+//Delete wishlist. 
 router.delete('/:id', (req, res) => {
     Wishlists.destroy({
         where:{

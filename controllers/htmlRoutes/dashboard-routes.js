@@ -1,7 +1,7 @@
 // dependencies
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-// const { Users, Wishlists, Items } = require('../../models');
+const { Users, Wishlists, Items } = require('../../models');
 
 // returns dashboard
 router.get('/', (req, res) => {
