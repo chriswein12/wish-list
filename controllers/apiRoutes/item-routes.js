@@ -4,20 +4,80 @@ const { Users, Wishlists, Items } = require('../../models');
 
 // returns 'add item' form
 router.get('/', (req, res) => {
-    console.log('route returns item form');
-    res.send('add item form')
+    Items.findAll({
+        attributes: [
+            'id',
+            'item_name',
+            'price',
+            'purchase_location',
+            'link',
+            'description'
+        ],
+        include: [
+            {
+                model: Wishlists,
+                attributes: [
+                    'id',
+                    'wishlist_name',
+                    'users_id',
+                ]
+            }
+        ]
+    })
+    .then(dbItemData => res.json(dbItemData))
+    .catch (err => {
+        console.log(err);
+        res.status(400).json(err);
+    });
 })
 
 // returns selected item details
 router.get('/:id', (req, res) => {
-    console.log('route returns selected item info');
-    res.send('item data')
+    Items.findOne({
+        where: {
+            id: req.params.id
+        },
+        attributes: [
+            'id',
+            'price',
+            'purchase_location',
+            'link',
+            'description'
+        ],
+        include: [
+            {
+                model: Wishlists,
+                attributes: [
+                    'id',
+                    'wishlist_name',
+                    'users_id',
+                ]
+            }
+        ]
+    })
+    .then(dbItemData => res.json(dbItemData))
+    .catch (err => {
+        console.log(err);
+        res.status(400).json(err);
+    });
 })
 
 // create/add new item
 router.post('/', (req, res) => {
-    console.log('route creates new item');
-    res.send('enter new item data')
+    if (req.session) {
+        Items.create({
+            item_name: req.body.item_name,
+            price: req.body.price,
+            purchase_location: req.body.purchase_location,
+            link: req.body.link,
+            description: req.body.description
+        })
+            .then(dbItemData => res.json(dbItemData))
+            .catch(err => {
+                console.log(err);
+                res.status(400).json(err);
+            });
+    }
 })
 
 
