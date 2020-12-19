@@ -11,16 +11,16 @@ Users.hasMany(Wishlists, {
 });
 
 Wishlists.belongsTo(Users, {
-    as: 'UserWishlist',
-    constraints: false,
-    // foreignKey: 'users_id',
+    foreignKey: 'users_id',
 });
 
 Wishlists.hasMany(Items, {
+    constraints: false,
     foreignKey: 'items_id'
 });
 
 Items.belongsTo(Wishlists, {
+    constraints: false,
     foreignKey: 'items_id'
 });
 

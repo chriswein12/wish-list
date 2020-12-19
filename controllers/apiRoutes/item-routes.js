@@ -1,6 +1,6 @@
 // file contains item-routes
 const router = require('express').Router();
-// const { Users, Wishlists, Items } = require('../../models');
+const { Users, Wishlists, Items } = require('../../models');
 
 // returns 'add item' form
 router.get('/', (req, res) => {

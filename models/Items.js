@@ -12,7 +12,7 @@ Items.init(
         id:{
             type:DataTypes.INTEGER,
             primaryKey: true,
-            autoIncrement: true,
+            autoIncrement: true
         },
         item_name: {
             type: DataTypes.STRING,
@@ -35,14 +35,6 @@ Items.init(
             type: DataTypes.STRING,
             allowNull: true
         },
-        wishlist_id :{
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'wishlists',
-                key: 'id'
-              }
-        }
     },
     {
         sequelize,

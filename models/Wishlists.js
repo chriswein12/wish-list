@@ -25,7 +25,6 @@ Wishlists.init(
               key: 'id'
             }
           },
-          
         items_id: {
             type: DataTypes.INTEGER,
             references: {

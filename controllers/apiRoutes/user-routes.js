@@ -2,9 +2,7 @@ const router = require('express').Router();
 const { Users, Wishlists, Items } = require('../../models');
 
 // returns user's dashboard data
-router.get( '/:id', (req, res) => {
-    // console.log("route returns individual user info")
-    // res.send('user data')
+router.get('/:id', (req, res) => {
     Users.findOne({
         attributes: { exclude: ['password'] },
         where: {
@@ -21,51 +19,47 @@ router.get( '/:id', (req, res) => {
         //     },
         // ]
     })
-    .then(dbUserData => {
-        if (!dbUserData) {
-            res.status(404).json({ message: 'No user with this id was found.' });
-            return;
-        }
-        res.json(dbUserData);
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+        .then(dbUserData => {
+            if (!dbUserData) {
+                res.status(404).json({ message: 'No user with this id was found.' });
+                return;
+            }
+            res.json(dbUserData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 })
 
-// returns user sign-up fields
-router.post( '/', (req, res) => {
-    console.log("route creates new user")
-    res.send('enter sign-up info')
-    User.create({
+// creates a new user
+router.post('/', (req, res) => {
+    console.log('req.body: ', req.body)
+    Users.create({
         username: req.body.username,
         email: req.body.email,
         password: req.body.password
     })
-    .then(dbUserData => {
-        // this callback ensures the session is created prior to sending response
-        req.session.user_id = dbUserData.id;
-        req.session.username = dbUserData.username;
-        req.session.loggedIn = true;
-        
-        req.session.save(() => {
+        .then(dbUserData => {
+            // this callback ensures the session is created prior to sending response
+            req.session.user_id = dbUserData.id;
+            req.session.username = dbUserData.username;
+            req.session.loggedIn = true;
 
-            // response is sent only after previous code runs
-            res.json(dbUserData);
+            req.session.save(() => {
+                // response is sent only after previous code runs
+                res.json(dbUserData);
+            });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
         });
-    })       
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
 })
 
 // route validates user login and starts new session
-router.post( '/login', (req, res) => {
-    console.log("route authorizes user login")
-    res.send('enter login data')
-    User.findOne({
+router.post('/login', (req, res) => {
+    Users.findOne({
         where: {
             email: req.body.email
         }
@@ -88,19 +82,17 @@ router.post( '/login', (req, res) => {
             req.session.username = dbUserData.username;
             req.session.loggedIn = true;
         });
-        
+
         res.json({ user: dbUserData, message: 'You are now logged in.' });
     })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 })
 
 // ends session
-router.post( '/logout', (req, res) => {
-    console.log("route ends session")
-    res.send('you are now logged out')
+router.post('/logout', (req, res) => {
     if (req.session.loggedIn) {
         req.session.destroy(() => {
             res.status(204).end();
