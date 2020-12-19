@@ -9,7 +9,7 @@ class Wishlists extends Model {}
 // creating new Whislist instance
 Wishlists.init(
     {
-        id:{
+        id: {
             type:DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
@@ -18,14 +18,14 @@ Wishlists.init(
             type: DataTypes.STRING,
             allowNull: false
         },
-        users_id: {
+        user_id: {
             type: DataTypes.INTEGER,
             references: {
               model: 'users',
               key: 'id'
             }
-          },
-        items_id: {
+        },
+        item_id: {
             type: DataTypes.INTEGER,
             references: {
               model: 'items',

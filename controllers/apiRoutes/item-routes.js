@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
                 attributes: [
                     'id',
                     'wishlist_name',
-                    'users_id',
+                    'user_id',
                 ]
             }
         ]
@@ -50,7 +50,7 @@ router.get('/:id', (req, res) => {
                 attributes: [
                     'id',
                     'wishlist_name',
-                    'users_id',
+                    'user_id',
                 ]
             }
         ]

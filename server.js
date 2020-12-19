@@ -2,6 +2,7 @@
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
+const bodyParser = require('body-parser');
 const session = require('express-session');
 // const exphbs = require('express-handlebars');
 
@@ -27,6 +28,7 @@ const sess = {
 // const helpers = require('./utils/helpers');
 // const hbs = exphbs.create({});
 
+app.use(bodyParser.json());
 app.use(session(sess));
 
 // app.engine('handlebars', hbs.engine);

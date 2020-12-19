@@ -8,16 +8,16 @@ router.get('/:id', (req, res) => {
         where: {
             id: req.params.id
         },
-        // include: [
-        //     {
-        //         model: Wishlists,
-        //         attributes: ['wishlist_name'],
-        //         include: {
-        //             model: Items,
-        //             attributes: ['item_name', 'price', 'purchase_location', 'link', 'description']
-        //         }
-        //     },
-        // ]
+        include: [
+            {
+                model: Wishlists,
+                attributes: ['wishlist_name'],
+                include: {
+                    model: Items,
+                    attributes: ['item_name', 'price', 'purchase_location', 'link', 'description']
+                }
+            },
+        ]
     })
         .then(dbUserData => {
             if (!dbUserData) {

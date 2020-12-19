@@ -9,7 +9,7 @@ class Items extends Model {}
 // creating new Whislist instance
 Items.init(
     {
-        id:{
+        id: {
             type:DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true

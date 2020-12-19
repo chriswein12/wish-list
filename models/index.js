@@ -7,21 +7,21 @@ const Items = require("./Items");
 
 // Creating Associations. Linking One users to many wishlists
 Users.hasMany(Wishlists, {
-    foreignKey: 'users_id'
+    foreignKey: 'user_id'
 });
 
 Wishlists.belongsTo(Users, {
-    foreignKey: 'users_id',
+    foreignKey: 'user_id',
 });
 
 Wishlists.hasMany(Items, {
     constraints: false,
-    foreignKey: 'items_id'
+    foreignKey: 'item_id'
 });
 
 Items.belongsTo(Wishlists, {
     constraints: false,
-    foreignKey: 'items_id'
+    foreignKey: 'item_id'
 });
 
 module.exports = { Users, Wishlists, Items };

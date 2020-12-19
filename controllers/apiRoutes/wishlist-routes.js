@@ -18,6 +18,11 @@ router.get('/:id', (req, res) => {
         where: {
             id:req.params.id
         },
+        attributes: [
+            'id',
+            'wishlist_name',
+            'item_id'
+        ],
         include: [
             {
                 model: Items,
