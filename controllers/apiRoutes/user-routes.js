@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Users } = require('../../models');
+const { Users, Wishlists, Items } = require('../../models');
 
 // returns user's dashboard data
 router.get( '/:id', (req, res) => {
