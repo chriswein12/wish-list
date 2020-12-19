@@ -43,7 +43,7 @@ Users.init(
     }
   },
   {
-      // Hashing for security. 
+    // Hashing for security. 
     hooks: {
       // set up beforeCreate lifecycle "hook" functionality
       async beforeCreate(newUserData) {

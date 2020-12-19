@@ -1,6 +1,16 @@
 const router = require('express').Router();
 const { Users, Wishlists, Items } = require('../../models');
 
+// returns all users
+router.get('/', (req, res) => {
+    Users.findAll()
+    .then(dbUserData => res.json(dbUserData))
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+})
+
 // returns user's dashboard data
 router.get('/:id', (req, res) => {
     Users.findOne({

@@ -21,7 +21,6 @@ router.get('/:id', (req, res) => {
         attributes: [
             'id',
             'wishlist_name',
-            'item_id'
         ],
         include: [
             {

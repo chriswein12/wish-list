@@ -34,7 +34,7 @@ Items.init(
         description: {
             type: DataTypes.STRING,
             allowNull: true
-        },
+        }
     },
     {
         sequelize,

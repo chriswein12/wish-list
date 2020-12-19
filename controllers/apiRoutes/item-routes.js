@@ -11,18 +11,17 @@ router.get('/', (req, res) => {
             'price',
             'purchase_location',
             'link',
-            'description'
+            'description',
         ],
-        include: [
-            {
-                model: Wishlists,
-                attributes: [
-                    'id',
-                    'wishlist_name',
-                    'user_id',
-                ]
-            }
-        ]
+        // include: [
+        //     {
+        //         model: Wishlists,
+        //         attributes: [
+        //             'id',
+        //             'wishlist_name'
+        //         ]
+        //     }
+        // ]
     })
     .then(dbItemData => res.json(dbItemData))
     .catch (err => {
@@ -39,10 +38,11 @@ router.get('/:id', (req, res) => {
         },
         attributes: [
             'id',
+            'item_name',
             'price',
             'purchase_location',
             'link',
-            'description'
+            'description',
         ],
         include: [
             {
@@ -50,7 +50,6 @@ router.get('/:id', (req, res) => {
                 attributes: [
                     'id',
                     'wishlist_name',
-                    'user_id',
                 ]
             }
         ]

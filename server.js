@@ -43,6 +43,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // instruct server to listen for requests; 'sync' method connects models to db tables and will create tables if non-existant; 'force: boolean' determines whether to drop and recreate db tables on startup
-sequelize.sync({ force: false }).then(() => {
+sequelize.query("SET FOREIGN_KEY_CHECKS = 0")
+.then (() => {
+    return sequelize.sync({ force: false })
+})
+.then (() => {
+    return sequelize.query("SET FOREIGN_KEY_CHECKS = 1")
+})
+.then(() => {
     app.listen(PORT, () => console.log(`Now listening on port ${PORT}.`));
+})
+.catch(err => {
+    console.error('Unable to connect to the database.', err)
 });
