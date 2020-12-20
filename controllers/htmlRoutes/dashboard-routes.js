@@ -2,9 +2,11 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
 const { Users, Wishlists, Items } = require('../../models');
+// linking auth
+const withAuth = require('../utils/auth');
 
 // returns dashboard
-router.get('/', (req, res) => {
+router.get('/', withAuth, (req, res) => {
     console.log('route returns dashboard')
     res.send('dashboard template')
     // console.log('res.body: ', res.body)

@@ -1,6 +1,8 @@
 // file contains item-routes
 const router = require('express').Router();
 const { Users, Wishlists, Items } = require('../../models');
+// linking auth
+const withAuth = require('../utils/auth');
 
 // returns 'add item' form
 router.get('/', (req, res) => {
@@ -62,7 +64,7 @@ router.get('/:id', (req, res) => {
 })
 
 // create/add new item
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
     if (req.session) {
         Items.create({
             item_name: req.body.item_name,

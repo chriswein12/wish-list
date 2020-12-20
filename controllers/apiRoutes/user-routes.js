@@ -1,5 +1,7 @@
 const router = require('express').Router();
 const { Users, Wishlists, Items } = require('../../models');
+// linking auth
+const withAuth = require('../utils/auth');
 
 // returns all users
 router.get('/', (req, res) => {
@@ -43,7 +45,7 @@ router.get('/:id', (req, res) => {
 })
 
 // creates a new user
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
     console.log('req.body: ', req.body)
     Users.create({
         username: req.body.username,
@@ -68,7 +70,7 @@ router.post('/', (req, res) => {
 })
 
 // route validates user login and starts new session
-router.post('/login', (req, res) => {
+router.post('/login', withAuth, (req, res) => {
     Users.findOne({
         where: {
             email: req.body.email
@@ -102,7 +104,7 @@ router.post('/login', (req, res) => {
 })
 
 // ends session
-router.post('/logout', (req, res) => {
+router.post('/logout', withAuth, (req, res) => {
     if (req.session.loggedIn) {
         req.session.destroy(() => {
             res.status(204).end();
