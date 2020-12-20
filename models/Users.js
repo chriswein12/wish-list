@@ -49,9 +49,10 @@ Users.init(
       async beforeBulkCreate(usersData) {
         for (const user of usersData) {
           user.password = await bcrypt.hash(user.password, 10);
-          // console.log('user.password: ', user.password);
-          // console.log('typeof user.password: ', typeof user.password)
-          return user
+          console.log('user.password: ', user.password);
+          console.log('typeof user.password: ', typeof user.password)
+
+          return usersData
         }
       },
       // set up beforeCreate lifecycle "hook" functionality
