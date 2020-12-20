@@ -6,9 +6,8 @@ const { Users, Wishlists, Items } = require('../../models');
 // returns home page
 router.get('/', (req, res) => {
     console.log('route returns home page')
-    res.send('home page template')
-    // console.log('res.body: ', res.body)
-    // res.render('homepage');
+    console.log('res.body: ', res.body)
+    res.render('homepage');
     
 })
 
