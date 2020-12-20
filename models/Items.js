@@ -16,11 +16,15 @@ Items.init(
         },
         item_name: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            validation: {
+                len: [1]
+            }
         },
         price: {
             type: DataTypes.DECIMAL(20, 2),
-            allowNull: false
+            allowNull: false,
+            validate: { isDecimal: true }
         },
         purchase_location: {
             type: DataTypes.STRING,

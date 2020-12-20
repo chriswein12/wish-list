@@ -1,6 +1,8 @@
 // file contains wishlist-routes
 const router = require('express').Router();
 const { Users, Wishlists, Items } = require('../../models');
+// const { v4: uuidv4 } = require('uuid');
+
 
 // returns all wishlists
 router.get('/', (req, res) => {
@@ -21,6 +23,7 @@ router.get('/:id', (req, res) => {
         attributes: [
             'id',
             'wishlist_name',
+            'user_id'
         ],
         include: [
             {
