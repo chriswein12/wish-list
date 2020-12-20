@@ -6,21 +6,27 @@ const sequelize = require('../config/connection');
 // creating wishlist model
 class Wishlists extends Model { }
 
-// creating new Whislist instance
+// creating new Whislist instance; 
 Wishlists.init(
   {
     id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true
+      // type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
+      // autoIncrement: true,
+      defaultValue: DataTypes.UUIDV4,
+      allowNull: false,
+      primaryKey: true
     },
     wishlist_name: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validation: {
+        len: [5]
+      }
     },
     user_id: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       references: {
         model: 'users',
         key: 'id'

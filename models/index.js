@@ -12,6 +12,7 @@ Users.hasMany(Wishlists, {
 
 Wishlists.belongsTo(Users, {
     foreignKey: 'user_id',
+    onDelete: 'SET NULL'
 });
 
 Wishlists.hasMany(Items, {

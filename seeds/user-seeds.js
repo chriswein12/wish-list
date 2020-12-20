@@ -5,16 +5,19 @@ const bcrypt = require('bcrypt');
 // data array
 const usersData = [
     {
+        id: 1,
         username: 'billy the kid',
         email: 'theKid@gmail.com',
         password: 'Tough2crack'
     },
     {
+        id: 2,
         username: 'bob the man',
         email: 'theMAN@gmail.com',
         password: 'NOTTough2crack'
     },
     {
+        id: 3,
         username: 'SallySuperWoman',
         email: 'KickButt@gmail.com',
         password: 'SuckerPunch2'
