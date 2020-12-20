@@ -30,3 +30,29 @@ nav {
     }
 }
 
+.brand-name {
+    font-family: Pacifico;
+    color: $primary-color;
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+.tagline {
+    margin-left: 20px;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.steps-container {
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.steps-container-padding {
+    padding: 20px 40px;
+}
+
+.steps-list-padding {
+    padding: 10px 15px;
+}
+
