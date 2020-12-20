@@ -4,43 +4,35 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 // creating wishlist model
-class Wishlists extends Model {}
+class Wishlists extends Model { }
 
 // creating new Whislist instance
 Wishlists.init(
-    {
-        id:{
-            type:DataTypes.INTEGER,
-            primaryKey: true,
-            autoIncrement: true,
-        },
-        wishlist_name: {
-            type: DataTypes.String,
-            allowNull: false
-        },
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
+    wishlist_name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
+    // user_id: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false,
+    //   references: {
+    //     model: 'users',
+    //     key: 'id'
+    //   }
+    // },
+  },
+  {
+    sequelize,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'wishlists'
+  }
+);
 
-        users_id: {
-            type: DataTypes.INTEGER,
-            references: {
-              model: 'users',
-              key: 'id'
-            }
-          },
-          
-        items_id: {
-            type: DataTypes.INTEGER,
-            references: {
-              model: 'items',
-              key: 'id'
-            }  
-          }
-        },
-        {
-            sequelize,
-            freezeTableName: true,
-            underscored: true,
-            modelName: 'wishlist'
-        }
- );
-
- module.exports = Wishlists;
+module.exports = Wishlists;

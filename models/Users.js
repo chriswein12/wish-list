@@ -1,17 +1,16 @@
 const { Model, DataTypes } = require('sequelize');
-// Should we add "Hashing"? 
-// const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
 
 // create our User model
 class Users extends Model {
   // set up method to run on instance data (per user) to check password
-  
+
   // Check for password. 
-  // checkPassword(loginPw) {
-  //   return bcrypt.compareSync(loginPw, this.password);
-  // }
+  checkPassword(loginPw) {
+    return bcrypt.compareSync(loginPw, this.password);
+  }
 }
 
 // define table columns and configuration
@@ -44,19 +43,29 @@ Users.init(
     }
   },
   {
-      //Hashing for security. 
-    // hooks: {
-    //   // set up beforeCreate lifecycle "hook" functionality
-    //   async beforeCreate(newUserData) {
-    //     newUserData.password = await bcrypt.hash(newUserData.password, 10);
-    //     return newUserData;
-    //   },
-    //   // set up beforeUpdate lifecycle "hook" functionality
-    //   async beforeUpdate(updatedUserData) {
-    //     updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
-    //     return updatedUserData;
-    //   }
-    // },
+    // Hashing for security. 
+    hooks: {
+      // hash seedfile
+      async beforeBulkCreate(usersData) {
+        for (const user of usersData) {
+          user.password = await bcrypt.hash(user.password, 10);
+          console.log('user.password: ', user.password);
+          console.log('typeof user.password: ', typeof user.password)
+
+          return usersData
+        }
+      },
+      // set up beforeCreate lifecycle "hook" functionality
+      async beforeCreate(newUserData) {
+        newUserData.password = await bcrypt.hash(newUserData.password, 10);
+        return newUserData;
+      },
+      // set up beforeUpdate lifecycle "hook" functionality
+      async beforeUpdate(updatedUserData) {
+        updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+        return updatedUserData;
+      }
+    },
     sequelize,
     timestamps: false,
     freezeTableName: true,
