@@ -1,0 +1,16 @@
+<section>
+  <button class="btn">Add New</button>
+</section>
+
+<section>
+  <h2>My Wish Lists</h2>
+  
+  {{#if wishlists.length}}
+  {{#each wishlist}}
+  <div>
+    <h3>{{wishlist.wishlist_name}}</h3>
+  </div>
+  {{/each}}
+  {{/if}}
+  
+</section>
