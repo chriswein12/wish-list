@@ -6,7 +6,7 @@ const sequelize = require('../config/connection');
 // create our User model
 class Users extends Model {
   // set up method to run on instance data (per user) to check password
-  
+
   // Check for password. 
   checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
@@ -45,6 +45,15 @@ Users.init(
   {
     // Hashing for security. 
     hooks: {
+      // hash seedfile
+      async beforeBulkCreate(usersData) {
+        for (const user of usersData) {
+          user.password = await bcrypt.hash(user.password, 10);
+          // console.log('user.password: ', user.password);
+          // console.log('typeof user.password: ', typeof user.password)
+          return user
+        }
+      },
       // set up beforeCreate lifecycle "hook" functionality
       async beforeCreate(newUserData) {
         newUserData.password = await bcrypt.hash(newUserData.password, 10);

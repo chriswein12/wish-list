@@ -35,6 +35,14 @@ Items.init(
             type: DataTypes.STRING,
             allowNull: true
         }
+        // wishlists_id: {
+        //     type: DataTypes.STRING,
+        //     allowNull: false,
+        //     references: {
+        //         model: 'wishlists',
+        //         key: 'id'
+        //     }
+        // }
     },
     {
         sequelize,

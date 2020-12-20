@@ -45,7 +45,7 @@ app.use(express.urlencoded({ extended: true }));
 // instruct server to listen for requests; 'sync' method connects models to db tables and will create tables if non-existant; 'force: boolean' determines whether to drop and recreate db tables on startup
 sequelize.query("SET FOREIGN_KEY_CHECKS = 0")
 .then (() => {
-    return sequelize.sync({ force: true })
+    return sequelize.sync({ force: false })
 })
 .then (() => {
     return sequelize.query("SET FOREIGN_KEY_CHECKS = 1")
