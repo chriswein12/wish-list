@@ -6,9 +6,8 @@ const { Users, Wishlists, Items } = require('../../models');
 // returns dashboard
 router.get('/', (req, res) => {
     console.log('route returns dashboard')
-    res.send('dashboard template')
-    // console.log('res.body: ', res.body)
-    // res.render('homepage');
+    console.log('res.body: ', res.body)
+    res.render('dashboard');
 
 })
 
