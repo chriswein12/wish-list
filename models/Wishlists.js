@@ -17,15 +17,15 @@ Wishlists.init(
     wishlist_name: {
       type: DataTypes.STRING,
       allowNull: false
-    }
-    // user_id: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    //   references: {
-    //     model: 'users',
-    //     key: 'id'
-    //   }
-    // },
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'users',
+        key: 'id'
+      }
+    },
   },
   {
     sequelize,
