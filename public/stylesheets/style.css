@@ -1,0 +1,27 @@
+header {
+  background-color: var(--primary);
+  width: 100%;
+  box-shadow: 0 8px 16px 0 rgba(35, 35, 35, 0.315);
+  margin-bottom: 20px;
+}
+
+nav a {
+  color: white;
+  font-size: 20px;
+  margin: 0 10px 0 10px;
+}
+nav a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.navbar-brand {
+  font-size: 30px;
+  font-family: Pacifico;
+}
+.navbar-brand:hover {
+  color: white;
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=style.css.map */
