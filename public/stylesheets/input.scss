@@ -1,0 +1,58 @@
+$primary-color: #0289FF;
+$default-shadow: 0 8px 16px 0 rgba(35, 35, 35, 0.315);
+
+header {
+    background-color: var(--primary);
+    width: 100%;
+    box-shadow: $default-shadow;
+    margin-bottom: 20px;
+  }
+
+nav {
+    a{
+    color: white;
+    font-size: 20px;
+    margin: 0 10px 0 10px;
+    &:hover {
+        color: white;
+        text-decoration: underline;
+    }
+    }
+}
+
+.navbar-brand {
+    font-size: 30px;
+    font-family: Pacifico;
+    &:hover {
+        color: white;
+        text-decoration: none;
+        
+    }
+}
+
+.brand-name {
+    font-family: Pacifico;
+    color: $primary-color;
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+.tagline {
+    margin-left: 20px;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.steps-container {
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.steps-container-padding {
+    padding: 20px 40px;
+}
+
+.steps-list-padding {
+    padding: 10px 15px;
+}
+
