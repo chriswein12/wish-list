@@ -5,12 +5,10 @@
 <section>
   <h2>My Wish Lists</h2>
   
-  {{#if wishlists.length}}
-  {{#each wishlist}}
+  {{#each lists as |list|}}
   <div>
-    <h3>{{wishlist.wishlist_name}}</h3>
+    <h3>{{list.wishlist_name}}</h3>
   </div>
   {{/each}}
-  {{/if}}
   
 </section>
