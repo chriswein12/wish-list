@@ -9,6 +9,9 @@ router.get('/', (req, res) => {
     console.log('route returns dashboard')
     //res.send('dashboard template')
     Wishlists.findAll({
+        //where: {
+        //    user_id: req.session.user_id
+        //},
         attributes: [
             'id',
             'wishlist_name',
