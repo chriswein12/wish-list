@@ -6,7 +6,19 @@ const { Users, Wishlists, Items } = require('../../models');
 
 // returns all wishlists
 router.get('/', (req, res) => {
-    Wishlists.findAll()
+    Wishlists.findAll({
+        attributes: [
+            'id',
+            'wishlist_name',
+            'user_id'
+        ],
+        include: [
+            {
+                model: Users,
+                attributes: ['id', 'username']
+            }
+        ]
+    })
     .then(dbWishlistData => res.json(dbWishlistData))
     .catch(err => {
         console.log(err);
@@ -28,7 +40,7 @@ router.get('/:id', (req, res) => {
         include: [
             {
                 model: Items,
-                attributes:['id', 'item_name', 'price', 'purchase_location']
+                attributes:['id', 'item_name', 'price', 'purchase_location', 'link', 'description']
             },
             {
                 model: Users,

@@ -25,4 +25,8 @@ Items.belongsTo(Wishlists, {
     // foreignKey: 'wishlists_id'
 });
 
+Items.belongsTo(Users, {
+    foreignKey: 'user_id'
+});
+
 module.exports = { Users, Wishlists, Items };

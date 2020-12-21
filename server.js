@@ -37,9 +37,6 @@ app.set('view engine', 'handlebars');
 // format POST and PUT data to facilitate server requests
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use(require('./controllers'));
 
 // access routes and static files
 app.use(express.static(path.join(__dirname, 'public')));
