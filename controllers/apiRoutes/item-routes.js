@@ -14,11 +14,11 @@ router.get('/', (req, res) => {
             'description',
         ],
     })
-    .then(dbItemData => res.json(dbItemData))
-    .catch (err => {
-        console.log(err);
-        res.status(400).json(err);
-    });
+        .then(dbItemData => res.json(dbItemData))
+        .catch(err => {
+            console.log(err);
+            res.status(400).json(err);
+        });
 })
 
 // returns selected item details
@@ -45,11 +45,11 @@ router.get('/:id', (req, res) => {
             }
         ]
     })
-    .then(dbItemData => res.json(dbItemData))
-    .catch (err => {
-        console.log(err);
-        res.status(400).json(err);
-    });
+        .then(dbItemData => res.json(dbItemData))
+        .catch(err => {
+            console.log(err);
+            res.status(400).json(err);
+        });
 })
 
 // create/add new item
@@ -70,5 +70,52 @@ router.post('/', (req, res) => {
     }
 })
 
+router.put('/:id', (req, res) => {
+    if (req.session) {
+        Items.update(
+            {
+                item_name: req.body.item_name,
+                price: req.body.price,
+                purchase_location: req.body.purchase_location,
+                link: req.body.link,
+                description: req.body.description
+            },
+            {
+                where: {
+                    id: req.params.id
+                }
+            })
+            .then(dbItemData => {
+                if (!dbItemData) {
+                    res.status(404).json({ message: 'This id does not match any items.' });
+                    return;
+                }
+                res.json(dbItemData);
+            })
+            .catch(err => {
+                console.log(err);
+                res.status(500).json(err);
+            });
+    }
+});
+
+router.delete('/:id', (req, res) => {
+    Items.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+        .then(dbItemData => {
+            if (!dbItemData) {
+                res.status(404).json({ message: 'This id doen not match any items.' });
+                return;
+            }
+            res.json(dbItem);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
 
 module.exports = router;

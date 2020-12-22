@@ -2,6 +2,8 @@
 const { Model, DataTypes } = require('sequelize');
 // linking connection
 const sequelize = require('../config/connection');
+const { current_year } = require('../utils/helpers.js')
+
 
 // creating wishlist model
 class Wishlists extends Model { }
@@ -10,9 +12,7 @@ class Wishlists extends Model { }
 Wishlists.init(
   {
     id: {
-      // type: DataTypes.INTEGER,
       type: DataTypes.UUID,
-      // autoIncrement: true,
       defaultValue: DataTypes.UUIDV4,
       allowNull: false,
       primaryKey: true
@@ -20,9 +20,21 @@ Wishlists.init(
     wishlist_name: {
       type: DataTypes.STRING,
       allowNull: false,
-      validation: {
-        len: [5]
+      validate: {
+        is: ['^[a-zA-Z0-9_ ]+$', 'i'],
+        len: [1, 25]
       }
+    },
+    event_date: {
+      type: DataTypes.DATEONLY,
+      // returns default value: 'YYYY-12-25',
+      defaultValue: function () {
+        return current_year()
+      },
+      validation: {
+        isDate: true
+      },
+      allowNull: true
     },
     user_id: {
       type: DataTypes.INTEGER,
