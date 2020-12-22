@@ -4,21 +4,22 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 // creating wishlist model
-class Items extends Model {}
+class Items extends Model { }
 
 // creating new Whislist instance
 Items.init(
     {
         id: {
-            type:DataTypes.INTEGER,
+            type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
         item_name: {
             type: DataTypes.STRING,
             allowNull: false,
-            validation: {
-                len: [1]
+            validate: {
+                is: ['^[a-zA-Z0-9_ ]+$', 'i'],
+                len: [1, 25]
             }
         },
         price: {
@@ -33,7 +34,7 @@ Items.init(
         link: {
             type: DataTypes.STRING,
             allowNull: true,
-            validate:{ isUrl: true }
+            validate: { isUrl: true }
         },
         description: {
             type: DataTypes.STRING,

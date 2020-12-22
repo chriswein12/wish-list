@@ -70,5 +70,47 @@ router.post('/', (req, res) => {
     }
 })
 
+router.put('/:id', (req, res) => {
+    if (req.session) {
+        Items.update(req.body, {
+            // individualHooks: true,
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(dbItemData => {
+            if (!dbItemData) {
+                res.status(404).json({ message: 'This id does not match any items.' });
+                return;
+            }
+            (dbItemData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+    }
+});
+
+router.delete('/:id', (req, res) => {
+    if (req.session) {
+        Items.destroy(req.body, {
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(dbItemData => {
+            if (!dbItemData) {
+                res.status(404).json({ message: 'This id doen not match any items.' });
+                return;
+            }
+            (dbItemData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+    }
+});
 
 module.exports = router;

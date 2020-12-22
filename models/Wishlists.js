@@ -10,9 +10,7 @@ class Wishlists extends Model { }
 Wishlists.init(
   {
     id: {
-      // type: DataTypes.INTEGER,
       type: DataTypes.UUID,
-      // autoIncrement: true,
       defaultValue: DataTypes.UUIDV4,
       allowNull: false,
       primaryKey: true
@@ -20,9 +18,21 @@ Wishlists.init(
     wishlist_name: {
       type: DataTypes.STRING,
       allowNull: false,
-      validation: {
-        len: [5]
+      validate: {
+        is: ['^[a-zA-Z0-9_ ]+$', 'i'],
+        len: [1, 25]
       }
+    },
+    event_date: {
+      type: DataTypes.DATEONLY,
+      // defaultValue: '2020-12-25',
+      allowNull: true,
+      defaultValue: function() {
+        return current_year()
+      },
+      validation: {
+        isDate: true
+      },
     },
     user_id: {
       type: DataTypes.INTEGER,
