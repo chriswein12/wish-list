@@ -1,14 +1,16 @@
 module.exports = {
 
     current_year: year => {
-        let current_year = this.wishlists.createdAt.split('-');
-        console.log('current_year: ', current_year)
+        let date = String(new Date())
+        console.log('DATE: ', date)
         
-        const thisYear = current_year[0]
-        console.log('thisYear: ', thisYear)
+        const thisYear = date.split(' ');
+        console.log('THISYear: ', thisYear)
+        console.log('THISYEAR: ', thisYear[3])
 
-        const thisXmas = thisYear+'-12-25'
-        console.log('thisXmas: ', thisXmas)
+        // const thisXmas = '"'+thisYear[3]+'-12-25"'
+        const thisXmas = thisYear[3]+'-12-25'
+        console.log('THISXmas: ', thisXmas)
 
         return thisXmas
     }

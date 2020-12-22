@@ -2,6 +2,8 @@
 const { Model, DataTypes } = require('sequelize');
 // linking connection
 const sequelize = require('../config/connection');
+const { current_year } = require('../utils/helpers.js')
+
 
 // creating wishlist model
 class Wishlists extends Model { }
