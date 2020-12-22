@@ -79,25 +79,28 @@ router.post('/', (req, res) => {
 })
 
 router.put('/:id', (req, res) => {
-    if (req.session) {
-        Wishlists.update(req.body, {
-            // individualHooks: true,
+    Wishlists.update(
+        {
+            wishlist_name: req.body.wishlist_name,
+            event_date: req.body.event_date,
+            user_id: req.body.user_id
+        },
+        {
             where: {
                 id: req.params.id
             }
         })
-            .then(dbWishlistData => {
-                if (!dbWishlistData) {
-                    res.status(404).json({ message: 'This id does not match any wishlists.' });
-                    return;
-                }
-                (dbWishlistData);
-            })
-            .catch(err => {
-                console.log(err);
-                res.status(500).json(err);
-            });
-    }
+        .then(dbWishlistData => {
+            if (!dbWishlistData) {
+                res.status(404).json({ message: 'This id does not match any wishlists.' });
+                return;
+            }
+            (dbWishlistData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
 // Delete wishlist. 

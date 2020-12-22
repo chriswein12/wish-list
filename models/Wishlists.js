@@ -27,14 +27,14 @@ Wishlists.init(
     },
     event_date: {
       type: DataTypes.DATEONLY,
-      // defaultValue: '2020-12-25',
-      allowNull: true,
-      defaultValue: function() {
+      // returns default value: 'YYYY-12-25',
+      defaultValue: function () {
         return current_year()
       },
       validation: {
         isDate: true
       },
+      allowNull: true
     },
     user_id: {
       type: DataTypes.INTEGER,
