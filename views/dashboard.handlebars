@@ -1,16 +1,20 @@
 <section>
-  <button class="btn">Add New</button>
+  <div class="container-fluid">
+    <h2>My Wish Lists</h2>
+    <button class="btn">Add New</button>
+  </div>
 </section>
 
 <section>
-  <h2>My Wish Lists</h2>
   
-  {{#if wishlists.length}}
-  {{#each wishlist}}
-  <div>
-    <h3>{{wishlist.wishlist_name}}</h3>
+  <div class="container">
+    <div class="row align-items-stretch justify-content-start card-deck">
+      {{#each lists as |list|}}
+        <div class="card">
+          <h3 class="card-title">{{list.wishlist_name}}</h3>
+        </div>
+      {{/each}}
+    </div>
   </div>
-  {{/each}}
-  {{/if}}
   
 </section>
