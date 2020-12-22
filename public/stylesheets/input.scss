@@ -5,7 +5,7 @@ header {
     background-color: var(--primary);
     width: 100%;
     box-shadow: $default-shadow;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
   }
 
 nav {
@@ -33,14 +33,14 @@ nav {
 .brand-name {
     font-family: Pacifico;
     color: $primary-color;
-    margin-top: 30px;
+    font-size: 40px;
     margin-left: 20px;
 }
 
 .tagline {
     margin-left: 20px;
     margin-bottom: 15px;
-    font-size: 22px;
+    font-size: 30px;
 }
 
 .steps-container {
@@ -56,3 +56,24 @@ nav {
     padding: 10px 15px;
 }
 
+
+
+.form-wrapper {
+    border: 2px solid $primary-color;
+    margin-top: 30px;
+}
+
+.create-title {
+    background-color: $primary-color;
+    color: white;
+    padding: 5px;
+    border: 2px solid $primary-color;
+}
+
+.input-wrapper {
+    padding: 10px;
+}
+
+.create-account-btn {
+    margin-bottom: 30px;
+}

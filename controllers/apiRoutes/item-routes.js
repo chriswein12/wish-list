@@ -13,15 +13,6 @@ router.get('/', (req, res) => {
             'link',
             'description',
         ],
-        // include: [
-        //     {
-        //         model: Wishlists,
-        //         attributes: [
-        //             'id',
-        //             'wishlist_name'
-        //         ]
-        //     }
-        // ]
     })
     .then(dbItemData => res.json(dbItemData))
     .catch (err => {

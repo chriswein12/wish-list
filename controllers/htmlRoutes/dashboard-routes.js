@@ -7,6 +7,7 @@ const { findAll } = require('../../models/Users');
 // returns dashboard
 router.get('/', (req, res) => {
     console.log('route returns dashboard')
+
     //res.send('dashboard template')
     Wishlists.findAll({
         //where: {
@@ -29,8 +30,8 @@ router.get('/', (req, res) => {
     //const db_data = {wishlists: lists}
     //console.log('res.body: ', res.body)
     //res.render('dashboard', db_data);
-    
 })
+
 
 // ends session
 router.get('/logout', (req, res) => {
