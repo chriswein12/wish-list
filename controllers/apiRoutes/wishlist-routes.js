@@ -1,14 +1,10 @@
 // file contains wishlist-routes
 const router = require('express').Router();
 const { Users, Wishlists, Items } = require('../../models');
-<<<<<<< HEAD
 // linking auth
 const withAuth = require('../utils/auth');
-=======
 const helpers = require('../../utils/helpers.js')
-// const { v4: uuidv4 } = require('uuid');
 
->>>>>>> develop
 
 // returns all wishlists
 router.get('/', (req, res) => {
@@ -83,11 +79,8 @@ router.post('/', withAuth, (req, res) => {
         });
 })
 
-<<<<<<< HEAD
 //Delete wishlist. 
 router.delete('/:id', withAuth, (req, res) => {
-=======
-router.put('/:id', (req, res) => {
     Wishlists.update(
         {
             wishlist_name: req.body.wishlist_name,
@@ -114,7 +107,6 @@ router.put('/:id', (req, res) => {
 
 // Delete wishlist. 
 router.delete('/:id', (req, res) => {
->>>>>>> develop
     Wishlists.destroy({
         where: {
             id: req.params.id
