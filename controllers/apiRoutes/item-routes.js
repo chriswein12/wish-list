@@ -2,7 +2,7 @@
 const router = require('express').Router();
 const { Users, Wishlists, Items } = require('../../models');
 // linking auth
-const withAuth = require('../utils/auth');
+const withAuth = require('../../utils/auth');
 
 // returns 'add item' form
 router.get('/', (req, res) => {
@@ -72,7 +72,7 @@ router.post('/', withAuth, (req, res) => {
     }
 })
 
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
     if (req.session) {
         Items.update(
             {
@@ -87,6 +87,8 @@ router.put('/:id', (req, res) => {
                     id: req.params.id
                 }
             })
+            console.log('dbItemData: ', dbItemData)
+
             .then(dbItemData => {
                 if (!dbItemData) {
                     res.status(404).json({ message: 'This id does not match any items.' });
@@ -101,7 +103,7 @@ router.put('/:id', (req, res) => {
     }
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
     Items.destroy({
         where: {
             id: req.params.id

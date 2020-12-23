@@ -1,14 +1,13 @@
 // dependencies
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const { Users, Wishlists, Items } = require('../../models');
-// linking auth
-const withAuth = require('../utils/auth');
-const { findAll } = require('../../models/Users');
-// returns dashboard
-router.get('/', withAuth, (req, res) => {
-    console.log('route returns dashboard')
+const { Wishlists, Users } = require('../../models');
+// const { findAll } = require('../../models/Users');
 
+
+// returns dashboard
+router.get('/', (req, res) => {
+    console.log('route returns dashboard')
     //res.send('dashboard template')
     Wishlists.findAll({
         //where: {
@@ -21,16 +20,12 @@ router.get('/', withAuth, (req, res) => {
     })
         .then(dbWishlistData => {
             const lists = dbWishlistData.map(list => list.get({ plain: true }));
-            res.render('dashboard', { lists }) 
+            res.render('dashboard', { lists })
         })
         .catch(err => {
             //console.log(err);
             res.status(500).json(err);
         });
-    //const lists = Wishlists.findAll()
-    //const db_data = {wishlists: lists}
-    //console.log('res.body: ', res.body)
-    //res.render('dashboard', db_data);
 })
 
 
@@ -40,7 +35,6 @@ router.get('/logout', (req, res) => {
     res.send('your session has ended')
 })
 
-// 
 
 
 module.exports = router;

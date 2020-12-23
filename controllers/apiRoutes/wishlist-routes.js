@@ -1,12 +1,13 @@
 // file contains wishlist-routes
 const router = require('express').Router();
 const { Users, Wishlists, Items } = require('../../models');
-// linking auth
-const withAuth = require('../utils/auth');
 const helpers = require('../../utils/helpers.js')
+// linking auth
+const withAuth = require('../../utils/auth');
 
 
 // returns all wishlists
+// future removal. 
 router.get('/', (req, res) => {
     Wishlists.findAll({
         attributes: [
@@ -79,13 +80,12 @@ router.post('/', withAuth, (req, res) => {
         });
 })
 
-//Delete wishlist. 
-router.delete('/:id', withAuth, (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
     Wishlists.update(
         {
             wishlist_name: req.body.wishlist_name,
             event_date: req.body.event_date,
-            user_id: req.body.user_id
+            user_id: req.body.user_id,
         },
         {
             where: {
@@ -94,11 +94,14 @@ router.delete('/:id', withAuth, (req, res) => {
         })
         .then(dbWishlistData => {
             if (!dbWishlistData) {
+                console.log('dbWishlistData: ', dbWishlistData)
                 res.status(404).json({ message: 'This id does not match any wishlists.' });
                 return;
             }
             res.json(dbWishlistData);
         })
+        console.log('dbWishlistData: ', dbWishlistData)
+
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
@@ -106,7 +109,7 @@ router.delete('/:id', withAuth, (req, res) => {
 });
 
 // Delete wishlist. 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
     Wishlists.destroy({
         where: {
             id: req.params.id

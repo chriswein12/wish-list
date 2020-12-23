@@ -2,26 +2,29 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
 const { Users, Wishlists, Items } = require('../../models');
-// linking auth
-const withAuth = require('../utils/auth');
 
 // returns home page
-router.get('/', withAuth, (req, res) => {
+router.get('/', (req, res) => {
     console.log(req.session.loggedIn);
     if (req.session.loggedIn) {
         res.redirect('/dashboard');
         return;
     }
-    console.log('route returns home page')
-    console.log('res.body: ', res.body)
+    // console.log('route returns home page')
+    // console.log('res.body: ', res.body)
     res.render('homepage');
     
 })
 
 // ends session
 router.get('/logout', (req, res) => {
-    console.log('redirects to homepage')
-    res.send('your session has ended')
+    if (!req.session.loggedIn) {
+        res.redirect('/homepage');
+        return;
+    }
+    // console.log('redirects to homepage')
+    // res.send('your session has ended')
+    res.render('homepage');
 })
 
 // returns login/signup page or user’s dashboard if there’s an active session
