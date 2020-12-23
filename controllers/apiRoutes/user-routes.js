@@ -6,11 +6,11 @@ const { Users, Wishlists, Items } = require('../../models');
 // returns all users
 router.get('/', (req, res) => {
     Users.findAll()
-    .then(dbUserData => res.json(dbUserData))
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+        .then(dbUserData => res.json(dbUserData))
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 })
 
 // returns user's dashboard data
@@ -102,10 +102,11 @@ router.post('/login', (req, res) => {
             console.log(err);
             res.status(500).json(err);
         });
-})
+});
 
 // ends session
 router.post('/logout', (req, res) => {
+
     if (req.session.loggedIn) {
         req.session.destroy(() => {
             res.status(204).end();

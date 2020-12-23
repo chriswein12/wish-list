@@ -13,9 +13,12 @@ async function loginFormHandler(event) {
         }),
         headers: { 'Content-Type': 'application/json' }
       });
+
+      console.log(response);
   
       if (response.ok) {
-        console.log("it works here!")
+        let test = response;
+        console.log(test);
         document.location.replace('/dashboard');
       } else {
         alert(response.statusText);

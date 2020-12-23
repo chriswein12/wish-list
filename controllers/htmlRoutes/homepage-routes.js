@@ -5,14 +5,14 @@ const { Users, Wishlists, Items } = require('../../models');
 
 // returns home page
 router.get('/', (req, res) => {
-    console.log(req.session.loggedIn);
+    console.log("the cookie is: ", req.session.loggedIn);
     if (req.session.loggedIn) {
         res.redirect('/dashboard');
         return;
     }
-    // console.log('route returns home page')
-    // console.log('res.body: ', res.body)
-    res.render('homepage');
+    console.log('route returns home page')
+    console.log('res.body: ', res.body)
+    res.render('homepage', {loggedIn: req.session.loggedIn});
     
 })
 
@@ -33,7 +33,7 @@ router.get('/login', (req, res) => {
         res.redirect('/dashboard');
         return;
     }
-    res.render('dashboard');    
+    res.render('dashboard', {loggedIn: req.session.loggedIn});    
 })
 
 

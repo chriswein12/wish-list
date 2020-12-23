@@ -22,7 +22,7 @@
             {{#if loggedIn}}
             <button id="logout" class="btn-no-style">Logout</button>
             {{else}}
-            <a href="/login" data-toggle="modal" data-target="#exampleModal">Login</a>
+            <a href="/login" data-toggle="modal" data-target="#loginModal">Login</a>
             {{/if}}
         </nav>
     </header>
@@ -33,7 +33,7 @@
     </main>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
