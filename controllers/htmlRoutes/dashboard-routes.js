@@ -20,6 +20,7 @@ router.get('/', (req, res) => {
     })
         .then(dbWishlistData => {
             const lists = dbWishlistData.map(list => list.get({ plain: true }));
+            console.log(lists);
             res.render('dashboard', { lists, loggedIn: req.session.loggedIn}) 
         })
         .catch(err => {
