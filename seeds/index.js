@@ -12,12 +12,11 @@ const seedAll = async () => {
   await seedItems();
   console.log('\n----- ITEMS SEEDED -----\n')
 
-  await seedWishlists();
-  console.log('\n----- WISHLISTS SEEDED -----\n');
-
   await seedUsers();
   console.log('\n----- USERS SEEDED -----\n');
 
+  await seedWishlists();
+  console.log('\n----- WISHLISTS SEEDED -----\n');
 
   process.exit(0);
 };
