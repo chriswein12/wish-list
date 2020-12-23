@@ -4,7 +4,7 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const session = require('express-session');
-// const exphbs = require('express-handlebars');
+const exphbs = require('express-handlebars');
 
 // instantiate server
 const app = express();
@@ -26,21 +26,21 @@ const sess = {
 };
 
 // const helpers = require('./utils/helpers');
-// const hbs = exphbs.create({});
+const hbs = exphbs.create({});
 
 app.use(bodyParser.json());
 app.use(session(sess));
 
-// app.engine('handlebars', hbs.engine);
-// app.set('view engine', 'handlebars');
-
-// access routes and static files
-app.use(require('./controllers'));
-app.use(express.static(path.join(__dirname, 'public')));
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 
 // format POST and PUT data to facilitate server requests
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// access routes and static files
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(require('./controllers'));
 
 // instruct server to listen for requests; 'sync' method connects models to db tables and will create tables if non-existant; 'force: boolean' determines whether to drop and recreate db tables on startup
 sequelize.query("SET FOREIGN_KEY_CHECKS = 0")
