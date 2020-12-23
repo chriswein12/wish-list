@@ -22,8 +22,6 @@ router.get('/logout', (req, res) => {
         res.redirect('/homepage');
         return;
     }
-    // console.log('redirects to homepage')
-    // res.send('your session has ended')
     res.render('homepage');
 })
 
