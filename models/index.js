@@ -12,16 +12,21 @@ Users.hasMany(Wishlists, {
 
 Wishlists.belongsTo(Users, {
     foreignKey: 'user_id',
+    onDelete: 'SET NULL'
 });
 
 Wishlists.hasMany(Items, {
-    // constraints: false,
-    // foreignKey: 'wishlists_id'
+    constraints: false,
+    foreignKey: 'wishlists_id'
 });
 
 Items.belongsTo(Wishlists, {
-    // constraints: false,
-    // foreignKey: 'wishlists_id'
+    constraints: false,
+    foreignKey: 'wishlists_id'
+});
+
+Items.belongsTo(Users, {
+    foreignKey: 'user_id'
 });
 
 module.exports = { Users, Wishlists, Items };

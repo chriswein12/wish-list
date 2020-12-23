@@ -24,7 +24,10 @@ Users.init(
     },
     username: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
     },
     email: {
       type: DataTypes.STRING,
@@ -49,9 +52,8 @@ Users.init(
       async beforeBulkCreate(usersData) {
         for (const user of usersData) {
           user.password = await bcrypt.hash(user.password, 10);
-          // console.log('user.password: ', user.password);
-          // console.log('typeof user.password: ', typeof user.password)
-          return user
+
+          return usersData
         }
       },
       // set up beforeCreate lifecycle "hook" functionality

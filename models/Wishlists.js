@@ -2,30 +2,48 @@
 const { Model, DataTypes } = require('sequelize');
 // linking connection
 const sequelize = require('../config/connection');
+const { current_year } = require('../utils/helpers.js')
+
 
 // creating wishlist model
 class Wishlists extends Model { }
 
-// creating new Whislist instance
+// creating new Whislist instance; 
 Wishlists.init(
   {
     id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      allowNull: false,
+      primaryKey: true
     },
     wishlist_name: {
       type: DataTypes.STRING,
-      allowNull: false
-    }
-    // user_id: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    //   references: {
-    //     model: 'users',
-    //     key: 'id'
-    //   }
-    // },
+      allowNull: false,
+      validate: {
+        is: ['^[a-zA-Z0-9_ ]+$', 'i'],
+        len: [1, 25]
+      }
+    },
+    event_date: {
+      type: DataTypes.DATEONLY,
+      // returns default value: 'YYYY-12-25',
+      defaultValue: function () {
+        return current_year()
+      },
+      validation: {
+        isDate: true
+      },
+      allowNull: true
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'users',
+        key: 'id'
+      }
+    },
   },
   {
     sequelize,
