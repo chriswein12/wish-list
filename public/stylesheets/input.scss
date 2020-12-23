@@ -56,7 +56,13 @@ nav {
     padding: 10px 15px;
 }
 
+.fa-check {
+    color: $primary-color;
+}
 
+span {
+    color: black;
+}
 
 %form-wrapper {
     border: 2px solid $primary-color;

@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
         attributes: [
             'id',
             'wishlist_name',
-            'event_date',
+            // 'event_date',
             'user_id'
         ],
         include: [

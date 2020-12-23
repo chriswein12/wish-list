@@ -62,7 +62,8 @@ router.post('/', withAuth, (req, res) => {
             price: req.body.price,
             purchase_location: req.body.purchase_location,
             link: req.body.link,
-            description: req.body.description
+            description: req.body.description,
+            id: req.body.wishlist_id
         })
             .then(dbItemData => res.json(dbItemData))
             .catch(err => {
