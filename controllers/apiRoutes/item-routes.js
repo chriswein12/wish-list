@@ -1,6 +1,8 @@
 // file contains item-routes
 const router = require('express').Router();
 const { Users, Wishlists, Items } = require('../../models');
+// linking auth
+const withAuth = require('../../utils/auth');
 
 // returns 'add item' form
 router.get('/', (req, res) => {
@@ -13,6 +15,15 @@ router.get('/', (req, res) => {
             'link',
             'description',
         ],
+        include: [
+            {
+                model: Wishlists,
+                attributes: [
+                    'id',
+                    'wishlist_name',
+                ]
+            }
+        ]
     })
         .then(dbItemData => res.json(dbItemData))
         .catch(err => {
@@ -53,14 +64,15 @@ router.get('/:id', (req, res) => {
 })
 
 // create/add new item
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
     if (req.session) {
         Items.create({
             item_name: req.body.item_name,
             price: req.body.price,
             purchase_location: req.body.purchase_location,
             link: req.body.link,
-            description: req.body.description
+            description: req.body.description,
+            id: req.body.wishlist_id
         })
             .then(dbItemData => res.json(dbItemData))
             .catch(err => {
@@ -70,7 +82,7 @@ router.post('/', (req, res) => {
     }
 })
 
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
     if (req.session) {
         Items.update(
             {
@@ -85,8 +97,10 @@ router.put('/:id', (req, res) => {
                     id: req.params.id
                 }
             })
+            
             .then(dbItemData => {
                 if (!dbItemData) {
+                    console.log('dbItemData: ', dbItemData)
                     res.status(404).json({ message: 'This id does not match any items.' });
                     return;
                 }
@@ -99,7 +113,7 @@ router.put('/:id', (req, res) => {
     }
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
     Items.destroy({
         where: {
             id: req.params.id
