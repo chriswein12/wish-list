@@ -1,13 +1,13 @@
 // dependencies
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const { Users, Wishlists, Items } = require('../../models');
-const { findAll } = require('../../models/Users');
+const { Wishlists, Users } = require('../../models');
+// const { findAll } = require('../../models/Users');
+
 
 // returns dashboard
 router.get('/', (req, res) => {
     console.log('route returns dashboard')
-
     //res.send('dashboard template')
     Wishlists.findAll({
         where: {
@@ -26,10 +26,6 @@ router.get('/', (req, res) => {
             //console.log(err);
             res.status(500).json(err);
         });
-    //const lists = Wishlists.findAll()
-    //const db_data = {wishlists: lists}
-    //console.log('res.body: ', res.body)
-    //res.render('dashboard', db_data);
 })
 
 
@@ -39,7 +35,6 @@ router.get('/logout', (req, res) => {
     res.send('your session has ended')
 })
 
-// 
 
 
 module.exports = router;

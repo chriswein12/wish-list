@@ -1,14 +1,16 @@
 const router = require('express').Router();
 const { Users, Wishlists, Items } = require('../../models');
+// linking auth
+// const withAuth = require('../../utils/auth');
 
 // returns all users
 router.get('/', (req, res) => {
     Users.findAll()
-    .then(dbUserData => res.json(dbUserData))
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+        .then(dbUserData => res.json(dbUserData))
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 })
 
 // returns user's dashboard data
@@ -92,18 +94,19 @@ router.post('/login', (req, res) => {
             req.session.username = dbUserData.username;
             req.session.loggedIn = true;
 
-        res.json({ user: dbUserData, message: 'You are now logged in.' });
+            res.json({ user: dbUserData, message: 'You are now logged in.' });
+        })
+
     })
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
         });
-    });
 });
 
 // ends session
 router.post('/logout', (req, res) => {
-    
+
     if (req.session.loggedIn) {
         req.session.destroy(() => {
             res.status(204).end();
