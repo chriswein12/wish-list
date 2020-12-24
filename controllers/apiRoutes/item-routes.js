@@ -15,6 +15,15 @@ router.get('/', (req, res) => {
             'link',
             'description',
         ],
+        include: [
+            {
+                model: Wishlists,
+                attributes: [
+                    'id',
+                    'wishlist_name',
+                ]
+            }
+        ]
     })
         .then(dbItemData => res.json(dbItemData))
         .catch(err => {
@@ -88,10 +97,10 @@ router.put('/:id', withAuth, (req, res) => {
                     id: req.params.id
                 }
             })
-            console.log('dbItemData: ', dbItemData)
-
+            
             .then(dbItemData => {
                 if (!dbItemData) {
+                    console.log('dbItemData: ', dbItemData)
                     res.status(404).json({ message: 'This id does not match any items.' });
                     return;
                 }
