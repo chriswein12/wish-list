@@ -1,60 +1,65 @@
 <section>
   <div class="container-fluid">
-    <h2>{{list.wishlist_name}}</h2>
-    <button class="btn">Add Item</button>
+    <button class="btn btn-primary">Add Item</button>
   </div>
 </section>
 
-<form>
-  <div class="form-row">
-    <div class="form-group col-md-3">
-      <label for="item-name">Item Name</label>
-      <input type="text" class="form-control" id="item-name" placeholder="Item Name">
+<div class="container item-form-container">
+  <form class="add-item-form">
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label for="item-name">Item Name</label>
+        <input type="text" class="form-control" id="item-name" placeholder="Item Name">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="price">Price</label>
+        <input type="number" min="0.01" step="any" class="form-control" id="price" placeholder="$">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="retailer">Where to Buy:</label>
+        <input type="text" class="form-control" id="retailer" placeholder="Retailer">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="weblink">Weblink</label>
+        <input type="url" class="form-control" id="weblink" placeholder="www.">
+      </div>
     </div>
-    <div class="form-group col-md-3">
-      <label for="price">Price</label>
-      <input type="number" min="0.01" step="any" class="form-control" id="inputPassword4" placeholder="$">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="notes">Additional Details</label>
+        <textarea name="notes" class="form-control" id="notes" placeholder="ie. Color, Size, Amount, etc."></textarea>
+      </div>
     </div>
-    <div class="form-group col-md-3">
-      <label for="retailer">Where to Buy:</label>
-      <input type="text" class="form-control" id="retailer" placeholder="Retailer">
-    </div>
-    <div class="form-group col-md-3">
-      <label for="weblink">Weblink</label>
-      <input type="url" class="form-control" id="weblink" placeholder="www.">
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="notes">Additional Details</label>
-      <textarea name="notes" class="form-control" id="notes" placeholder="ie. Color, Size, Amount, etc."></textarea>
-    </div>
-  </div>
-  <button type="submit" class="btn btn-primary">Save</button>
-  <button class="btn btn-secondary">Cancel</button>
-</form>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <button class="btn btn-secondary">Cancel</button>
+  </form>
+</div>
+
+<h2>{{listData.wishlist_name}}</h2>
 
 <section>
-  
+
   <div class="accordion" id="list">
     {{#each items as |item|}}
-      <h3 class="accordian-header" id="header-{{item.id}}">
-        <button class="accordian-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          {{item.item_name}}
-        </button>
-      </h3>
-      <div id="collapse-{{item.id}}" class="accordion-collapse collaps show" aria-labelledby="header-{{item.id}}" data-bs-parent="list">
-        <div class="accordian-body">
-          <ul>
-            <li>Price: {{item.price}}</li>
-            <li>Description: {{item.description}}</li>
-            <li>Buy at: <a href="{{item.link}}">{{item.purchase_location}}</a></li>
-          </ul>
-        </div>
+    <h3 class="accordian-header" id="header-{{item.id}}">
+      <button class="accordian-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+        aria-expanded="true" aria-controls="collapseOne">
+        {{item.item_name}}
+      </button>
+    </h3>
+    <div id="collapse-{{item.id}}" class="accordion-collapse collaps show" aria-labelledby="header-{{item.id}}"
+      data-bs-parent="list">
+      <div class="accordian-body">
+        <ul>
+          <li>Price: {{item.price}}</li>
+          <li>Description: {{item.description}}</li>
+          <li>Buy at: <a href="{{item.link}}">{{item.purchase_location}}</a></li>
+        </ul>
       </div>
+    </div>
     {{/each}}
   </div>
-  
+
 </section>
 
 <script src="/javascript/singleWishlist.js"></script>

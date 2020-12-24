@@ -13,6 +13,15 @@ router.get('/', (req, res) => {
             'link',
             'description',
         ],
+        include: [
+            {
+                model: Wishlists,
+                attributes: [
+                    'id',
+                    'wishlist_name',
+                ]
+            }
+        ]
     })
         .then(dbItemData => res.json(dbItemData))
         .catch(err => {
@@ -61,7 +70,7 @@ router.post('/', (req, res) => {
             purchase_location: req.body.purchase_location,
             link: req.body.link,
             description: req.body.description,
-            id: req.body.wishlist_id
+            wishlist_id: req.body.wishlist_id
         })
             .then(dbItemData => res.json(dbItemData))
             .catch(err => {

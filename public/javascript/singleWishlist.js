@@ -1,19 +1,36 @@
 async function itemFormHandler(event) {
-    event.preventDefault();
+    // event.preventDefault();
+    debugger;
+    const item_name = document.querySelector('#item-name').value.trim();
+    const price = document.querySelector('#price').value;
+    const purchase_location = document.querySelector('#retailer').value.trim();
+    const link = document.querySelector('#weblink').value;
+    const description = document.querySelector('#notes').value.trim();
+    const id = window.location.toString().split('/')[window.location.toString().split('/').length - 1];
 
-    const item_name = document.querySelector()
-const wishlist_id = window.location.toString().split('/')[
-    window.location.toString().split('/').length - 1
-  ];
+    console.log(item_name);
+    console.log(link);
+    console.log(id);
 
-  if()
+    if (item_name && price && purchase_location && id) {
+        const response = await fetch('/api/items', {
+            method: 'post',
+            body: JSON.stringify({
+                item_name,
+                price,
+                purchase_location,
+                link,
+                description,
+                id
+            }),
+            headers: { 'Content-Type': 'application/json' }
+        });
+        if (response.ok) {
+            document.location.reload();
+        } else {
+            alert(response.statusText);
+        }
+    }
+};
 
-}
-
-
-item_name: req.body.item_name,
-price: req.body.price,
-purchase_location: req.body.purchase_location,
-link: req.body.link,
-description: req.body.description,
-id: req.body.wishlist_id
+document.querySelector('.add-item-form').addEventListener('submit', itemFormHandler);
