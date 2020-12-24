@@ -26,7 +26,8 @@ router.get('/:id', (req, res) => {
         ]
     })
     .then(dbWishlistData => {
-        const listData = dbWishlistData.map(list => list.get({ plain: true }));
+        console.log("Our returning Data", dbWishlistData);
+        const listData = dbWishlistData.get({ plain: true });
         res.render('wishlist', { listData, loggedIn: req.session.loggedIn}) 
     })
     .catch(err => {
