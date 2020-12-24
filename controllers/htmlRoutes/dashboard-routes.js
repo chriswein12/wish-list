@@ -20,12 +20,13 @@ router.get('/', (req, res) => {
     })
         .then(dbWishlistData => {
             const lists = dbWishlistData.map(list => list.get({ plain: true }));
-            res.render('dashboard', { lists, loggedIn: req.session.loggedIn}) 
+            res.render('dashboard', {lists, loggedIn: req.session.loggedIn}) 
         })
         .catch(err => {
             //console.log(err);
             res.status(500).json(err);
         });
+
 })
 
 
