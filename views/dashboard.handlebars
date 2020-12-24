@@ -1,20 +1,35 @@
 <section>
   <div class="container-fluid">
     <h2>My Wish Lists</h2>
-    <button class="btn">Add New</button>
+
+    <div>
+      <h3 class="new-list-title">Add a new wish list</h3>
+      <form class="new-list-form">
+        <div class="input-wrapper">
+          <div class="form-group">
+            <label for="list-name"></label>
+            <input type="text" class="form-control" id="list-name" placeholder="Enter wish list name">
+          </div>
+        </div>
+        <button class="btn new-list-btn" type="submit">Add New</button>
+      </form>
+    </div>
+
   </div>
 </section>
 
-<section>
-  
-  <div class="container">
-    <div class="row align-items-stretch justify-content-start card-deck">
-      {{#each lists as |list|}}
-        <div class="card">
-          <h3 class="card-title">{{list.wishlist_name}}</h3>
-        </div>
-      {{/each}}
-    </div>
-  </div>
-  
-</section>
+{{#if lists}}
+  <section>
+    <div class="container">
+      <div class="row align-items-stretch justify-content-start card-deck">
+        {{#each lists as |list|}}
+          <div class="card">
+            <h3 class="card-title">{{list.wishlist_name}}</h3>
+          </div>
+        {{/each}}
+      </div>
+    </div>  
+  </section>
+{{/if}}
+
+<script src="/javascript/dashboard.js"></script>

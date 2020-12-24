@@ -10,9 +10,9 @@ router.get('/', (req, res) => {
 
     //res.send('dashboard template')
     Wishlists.findAll({
-        //where: {
-        //    user_id: req.session.user_id
-        //},
+        where: {
+            user_id: req.session.user_id
+        },
         attributes: [
             'id',
             'wishlist_name',
@@ -20,16 +20,13 @@ router.get('/', (req, res) => {
     })
         .then(dbWishlistData => {
             const lists = dbWishlistData.map(list => list.get({ plain: true }));
-            res.render('dashboard', {loggedIn: req.session.loggedIn}) 
+            res.render('dashboard', {lists, loggedIn: req.session.loggedIn}) 
         })
         .catch(err => {
             //console.log(err);
             res.status(500).json(err);
         });
-    //const lists = Wishlists.findAll()
-    //const db_data = {wishlists: lists}
-    //console.log('res.body: ', res.body)
-    //res.render('dashboard', db_data);
+
 })
 
 
