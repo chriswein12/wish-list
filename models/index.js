@@ -16,13 +16,15 @@ Wishlists.belongsTo(Users, {
 });
 
 Wishlists.hasMany(Items, {
-    constraints: false,
-    foreignKey: 'wishlists_id'
+    // constraints: false,
+    foreignKey: 'wishlists_id',
+    onDelete: 'SET NULL'
 });
 
 Items.belongsTo(Wishlists, {
     constraints: false,
-    foreignKey: 'wishlists_id'
+    foreignKey: 'wishlists_id',
+    onDelete: 'SET NULL'
 });
 
 Items.belongsTo(Users, {
