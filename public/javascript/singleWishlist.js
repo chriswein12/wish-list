@@ -1,12 +1,14 @@
 async function itemFormHandler(event) {
     // event.preventDefault();
-    debugger;
+    // debugger;
     const item_name = document.querySelector('#item-name').value.trim();
     const price = document.querySelector('#price').value;
     const purchase_location = document.querySelector('#retailer').value.trim();
     const link = document.querySelector('#weblink').value;
     const description = document.querySelector('#notes').value.trim();
-    const wishlist_id = window.location.toString().split('/')[window.location.toString().split('/').length - 1];
+
+    const rawId = window.location.toString().split('/')[window.location.toString().split('/').length - 1];
+    const id = rawId.slice(0, 36)
 
     console.log(item_name);
     console.log(link);

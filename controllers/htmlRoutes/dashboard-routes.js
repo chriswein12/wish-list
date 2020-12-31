@@ -2,13 +2,11 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
 const { Wishlists, Users } = require('../../models');
-// const { findAll } = require('../../models/Users');
 
 
 // returns dashboard
 router.get('/', (req, res) => {
     console.log('route returns dashboard')
-    //res.send('dashboard template')
     Wishlists.findAll({
         where: {
            user_id: req.session.user_id
@@ -16,9 +14,19 @@ router.get('/', (req, res) => {
         attributes: [
             'id',
             'wishlist_name',
+            // 'event_date',
+            'user_id'
+
+        ],
+        include: [
+            {
+                model: Users,
+                attributes: ['id', 'username']
+            }
         ]
     })
         .then(dbWishlistData => {
+            // serialize data and save to new 'lists' array: returns specified data for each wishlist rather than the whole Sequelize object
             const lists = dbWishlistData.map(list => list.get({ plain: true }));
             res.render('dashboard', {lists, loggedIn: req.session.loggedIn}) 
         })
