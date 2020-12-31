@@ -1,4 +1,4 @@
-  <section>
+<section>
   <div class="container-fluid">
     <button class="btn btn-primary">Add Item</button>
   </div>
@@ -38,23 +38,24 @@
 <h2>{{listData.wishlist_name}}</h2>
 
 <section>
-
   <div class="accordion" id="list">
     {{#each items as |item|}}
-    <h3 class="accordian-header" id="header-{{item.id}}">
-      <button class="accordian-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-        aria-expanded="true" aria-controls="collapseOne">
-        {{item.item_name}}
-      </button>
-    </h3>
-    <div id="collapse-{{item.id}}" class="accordion-collapse collapse  show" aria-labelledby="header-{{item.id}}"
-      data-bs-parent="list">
-      <div class="accordian-body">
-        <ul>
-          <li>Price: {{item.price}}</li>
-          <li>Description: {{item.description}}</li>
-          <li>Buy at: <a href="{{item.link}}">{{item.purchase_location}}</a></li>
-        </ul>
+    <div class='accordion-item'>
+      <h3 class="accordian-header" id="header-{{item.id}}">
+        <button class="accordian-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+          aria-expanded="true" aria-controls="collapseOne">
+          {{item.item_name}}
+        </button>
+      </h3>
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="header-{{item.id}}"
+        data-bs-parent="#list">
+        <div class="accordian-body">
+          <ul>
+            <li>Price: {{item.price}}</li>
+            <li>Description: {{item.description}}</li>
+            <li>Buy at: <a href="{{item.link}}">{{item.purchase_location}}</a></li>
+          </ul>
+        </div>
       </div>
     </div>
     {{/each}}
