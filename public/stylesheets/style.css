@@ -50,6 +50,14 @@ nav a:hover {
   padding: 10px 15px;
 }
 
+.fa-check {
+  color: #0289FF;
+}
+
+span {
+  color: black;
+}
+
 .login-form, .create-form {
   border: 2px solid #0289FF;
 }
@@ -71,6 +79,13 @@ nav a:hover {
 
 .create-account-btn {
   margin-bottom: 30px;
+}
+
+.item-form-container {
+  border: 2px solid #0289FF;
+  box-shadow: 0 8px 16px 0 rgba(35, 35, 35, 0.315);
+  padding: 20px;
+  border-radius: 10px;
 }
 
 /*# sourceMappingURL=style.css.map */

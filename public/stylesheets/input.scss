@@ -56,7 +56,13 @@ nav {
     padding: 10px 15px;
 }
 
+.fa-check {
+    color: $primary-color;
+}
 
+span {
+    color: black;
+}
 
 %form-wrapper {
     border: 2px solid $primary-color;
@@ -85,6 +91,14 @@ nav {
 
 .create-account-btn {
     margin-bottom: 30px;
+}
+
+
+.item-form-container {
+    border: 2px solid $primary-color;
+    box-shadow: $default-shadow;
+    padding: 20px;
+    border-radius: 10px;
 }
 
 .new-list-title h3 {

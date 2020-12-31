@@ -39,7 +39,16 @@ Items.init(
         description: {
             type: DataTypes.STRING,
             allowNull: true
-        }
+        },
+        wishlist_id: {
+            // type: DataTypes.STRING,
+            type: DataTypes.UUID,
+            allowNull: true,
+            references: {
+                model: 'wishlists',
+                key: 'id'
+            }
+        },
     },
     {
         sequelize,

@@ -18,8 +18,11 @@ router.get('/', (req, res) => {
 
 // ends session
 router.get('/logout', (req, res) => {
-    console.log('redirects to homepage')
-    res.send('your session has ended')
+    if (!req.session.loggedIn) {
+        res.redirect('/homepage');
+        return;
+    }
+    res.render('homepage');
 })
 
 // returns login/signup page or user’s dashboard if there’s an active session
