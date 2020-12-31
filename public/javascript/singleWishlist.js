@@ -1,6 +1,5 @@
 async function itemFormHandler(event) {
     // event.preventDefault();
-    // debugger;
     const item_name = document.querySelector('#item-name').value.trim();
     const price = document.querySelector('#price').value;
     const purchase_location = document.querySelector('#retailer').value.trim();
@@ -13,6 +12,7 @@ async function itemFormHandler(event) {
     console.log(item_name);
     console.log(link);
     console.log(id);
+    debugger;
 
     if (item_name && price && purchase_location && id) {
         const response = await fetch('/api/items', {

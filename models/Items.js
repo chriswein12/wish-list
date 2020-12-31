@@ -6,7 +6,7 @@ const sequelize = require('../config/connection');
 // creating wishlist model
 class Items extends Model { }
 
-// creating new Whislist instance
+// creating new Wishlist instance
 Items.init(
     {
         id: {

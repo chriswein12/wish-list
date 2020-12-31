@@ -39,7 +39,7 @@
 
 <section>
   <div class="accordion" id="list">
-    {{#each items as |item|}}
+    {{#each listData as |item|}}
     <div class='accordion-item'>
       <h3 class="accordian-header" id="header-{{item.id}}">
         <button class="accordian-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
@@ -60,7 +60,6 @@
     </div>
     {{/each}}
   </div>
-
 </section>
 
 <script src="/javascript/singleWishlist.js"></script>

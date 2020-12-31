@@ -3,6 +3,7 @@ const router = require('express').Router();
 const sequelize = require('../../config/connection');
 const { Users, Wishlists, Items } = require('../../models');
 
+// display selected wishlist
 router.get('/:id', (req, res) => {
     Wishlists.findOne({
         where: {
@@ -25,17 +26,17 @@ router.get('/:id', (req, res) => {
             }
         ]
     })
-    .then(dbWishlistData => {
-        console.log("Our returning Data", dbWishlistData.get({ plain: true }));
-        console.log("ID: ", dbWishlistData.id);
-        const listData = dbWishlistData.get({ plain: true });
-        res.render('wishlist', { listData })
-        // res.render('wishlist', { listData, loggedIn: req.session.loggedIn}) 
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+        .then(dbWishlistData => {
+            console.log("Our returning Data", dbWishlistData.get({ plain: true }));
+            console.log("ID: ", dbWishlistData.id);
+            const listData = dbWishlistData.get({ plain: true });
+            res.render('wishlist', { listData })
+            // res.render('wishlist', { listData, loggedIn: req.session.loggedIn}) 
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
 module.exports = router;
