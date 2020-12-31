@@ -41,7 +41,7 @@ Items.init(
             allowNull: true
         },
         wishlist_id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
             references: {
                 model: 'wishlists',
