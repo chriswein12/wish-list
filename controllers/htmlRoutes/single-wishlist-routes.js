@@ -11,13 +11,13 @@ router.get('/:id', (req, res) => {
         attributes: [
             'id',
             'wishlist_name',
-            // 'event_date',
+            'event_date',
             'user_id'
         ],
         include: [
             {
                 model: Items,
-                attributes: ['id', 'item_name', 'price', 'purchase_location', 'link', 'description']
+                attributes: ['id', 'item_name', 'price', 'purchase_location', 'link', 'description', 'wishlist_id']
             },
             {
                 model: Users,
@@ -26,12 +26,14 @@ router.get('/:id', (req, res) => {
         ]
     })
     .then(dbWishlistData => {
-        console.log("Our returning Data", dbWishlistData);
+        console.log("Our returning Data", dbWishlistData.get({ plain: true }));
+        console.log("ID: ", dbWishlistData.id);
         const listData = dbWishlistData.get({ plain: true });
-        res.render('wishlist', { listData, loggedIn: req.session.loggedIn}) 
+        res.render('wishlist', { listData })
+        // res.render('wishlist', { listData, loggedIn: req.session.loggedIn}) 
     })
     .catch(err => {
-        //console.log(err);
+        console.log(err);
         res.status(500).json(err);
     });
 });
