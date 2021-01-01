@@ -7,14 +7,14 @@ async function itemFormHandler(event) {
     const description = document.querySelector('#notes').value.trim();
 
     const rawId = window.location.toString().split('/')[window.location.toString().split('/').length - 1];
-    const id = rawId.slice(0, 36)
+    const wishlist_id = rawId.slice(0, 36)
 
     console.log(item_name);
     console.log(link);
-    console.log(id);
+    console.log(wishlist_id);
     debugger;
 
-    if (item_name && price && purchase_location && id) {
+    if (item_name && price && purchase_location && wishlist_id) {
         const response = await fetch('/api/items', {
             method: 'post',
             body: JSON.stringify({
@@ -23,7 +23,7 @@ async function itemFormHandler(event) {
                 purchase_location,
                 link,
                 description,
-                id
+                wishlist_id
             }),
             headers: { 'Content-Type': 'application/json' }
         });

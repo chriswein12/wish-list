@@ -11,6 +11,7 @@ Items.init(
     {
         id: {
             type: DataTypes.INTEGER,
+            allowNull: false,
             primaryKey: true,
             autoIncrement: true
         },
@@ -29,21 +30,20 @@ Items.init(
         },
         purchase_location: {
             type: DataTypes.STRING,
-            allowNull: true
+            // allowNull: true
         },
         link: {
             type: DataTypes.STRING,
-            allowNull: true,
+            // allowNull: true,
             validate: { isUrl: true }
         },
         description: {
             type: DataTypes.STRING,
-            allowNull: true
+            // allowNull: true
         },
         wishlist_id: {
             // type: DataTypes.STRING,
             type: DataTypes.UUID,
-            allowNull: true,
             references: {
                 model: 'wishlists',
                 key: 'id'
