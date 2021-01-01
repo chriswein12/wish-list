@@ -44,8 +44,9 @@ nav {
 }
 
 .steps-container {
-    border: 2px solid black;
+    border: 2px solid $primary-color;
     border-radius: 10px;
+    box-shadow: $default-shadow;
 }
 
 .steps-container-padding {
@@ -71,6 +72,7 @@ span {
 .create-form {
     @extend %form-wrapper;
     margin-top: 30px;
+    box-shadow: $default-shadow;
 }
 
 .login-form {
