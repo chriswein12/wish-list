@@ -24,9 +24,9 @@
     <div class="container">
       <div class="row align-items-stretch justify-content-start card-deck">
         {{#each lists as |list|}}
-          <div class="card col-md-2 ">
-            <h3 class="card-title login">{{list.wishlist_name}}</h3>
-             <button class="btn btn-primary" type="submit">Edit List</button>
+          <div class="card">
+            <h3 class="card-title">{{list.wishlist_name}}</h3>
+            <button class="btn"><a href="/wishlist/{{list.id}}">Edit Wishlist</a></button>
           </div>
         {{/each}}
       </div>
