@@ -3,33 +3,28 @@ const router = require('express').Router();
 const sequelize = require('../../config/connection');
 const { Users, Wishlists, Items } = require('../../models');
 
-// display selected wishlist
 // router.get('/:id', (req, res) => {
-//     Wishlists.findOne({
+//     Items.findAll({
 //         where: {
-//             id: req.params.id
+//             wishlist_id: req.params.id
 //         },
 //         attributes: [
 //             'id',
-//             'wishlist_name',
-//             'event_date',
-//             'user_id'
+//             'item_name',
+//             'price',
+//             'purchase_location',
+//             'link',
+//             'description',
+//             'wishlist_id'
 //         ],
 //         include: [
 //             {
-//                 model: Items,
-//                 // where: {
-//                 //     wishlist_id: req.params.id
-//                 // },
+//                 model: Wishlists,
 //                 attributes: [
-//                     'id', 
-//                     'item_name', 
-//                     'price', 
-//                     'purchase_location', 
-//                     'link', 
-//                     'description', 
-//                     'wishlist_id',
-//                     // [sequelize.literal('(SELECT item_name(*) FROM items WHERE wishlist_id = wishlists.id)'), 'list_item']
+//                     'id',
+//                     'wishlist_name',
+//                     'event_date',
+//                     'user_id'
 //                 ]
 //             },
 //             {
@@ -38,42 +33,45 @@ const { Users, Wishlists, Items } = require('../../models');
 //             }
 //         ]
 //     })
-//         .then(dbWishlistData => {
-//             console.log("Our returning Data", dbWishlistData.get({ plain: true }));
-//             console.log("ID: ", dbWishlistData.id);
-//             const listData = dbWishlistData.get({ plain: true });
-//             console.log('listData.items[0]: ', listData.items[0])
-//             // res.render('wishlist', { listData })
-//             res.render('wishlist', { listData, loggedIn: req.session.loggedIn}) 
-//         })
-//         .catch(err => {
-//             console.log(err);
-//             res.status(500).json(err);
-//         });
-// });
+//     .then(dbItemData => {
+//         // debugger
+//         console.log("req.params: ", req.params);
+//         console.log('dbItemData: ', dbItemData);
+//         // console.log("dbItemData", dbItemData.get({ plain: true }));
+//         // console.log("ID: ", dbWishlistData.id);
+//         // const itemData = dbItemData.get({ plain: true });
+//         res.render('dbItemData', { dbItemData })
+//         // res.render('wishlist', { listData, loggedIn: req.session.loggedIn}) 
+//     })
+//     .catch(err => {
+//         console.log(err);
+//         res.status(500).json(err);
+//     });
+// })
 
+// display selected wishlist
 router.get('/:id', (req, res) => {
-    Items.findAll({
+    Wishlists.findOne({
         where: {
-            wishlist_id: req.params.id
+            id: req.params.id
         },
         attributes: [
             'id',
-            'item_name',
-            'price',
-            'purchase_location',
-            'link',
-            'description',
-            'wishlist_id'
+            'wishlist_name',
+            'event_date',
+            'user_id'
         ],
         include: [
             {
-                model: Wishlists,
+                model: Items,
                 attributes: [
-                    'id',
-                    'wishlist_name',
-                    'event_date',
-                    'user_id'
+                    'id', 
+                    'item_name', 
+                    'price', 
+                    'purchase_location', 
+                    'link', 
+                    'description', 
+                    'wishlist_id'
                 ]
             },
             {
@@ -82,20 +80,19 @@ router.get('/:id', (req, res) => {
             }
         ]
     })
-    .then(dbItemData => {
-        // debugger
-        console.log("req.params: ", req.params);
-        console.log('dbItemData: ', dbItemData);
-        // console.log("dbItemData", dbItemData.get({ plain: true }));
-        // console.log("ID: ", dbWishlistData.id);
-        const itemData = dbItemData.get({ plain: true });
-        res.render('list-items', { itemData })
-        // res.render('wishlist', { listData, loggedIn: req.session.loggedIn}) 
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
-})
+        .then(dbWishlistData => {
+            console.log("Our returning Data", dbWishlistData.get({ plain: true }));
+            console.log("ID: ", dbWishlistData.id);
+            const listData = dbWishlistData.get({ plain: true });
+            // console.log('listData.items[0]: ', listData.items[0])
+            res.render('wishlist', { listData })
+            // res.render('wishlist', { listData, loggedIn: req.session.loggedIn}) 
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
+
 
 module.exports = router;
