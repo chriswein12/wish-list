@@ -22,6 +22,6 @@ async function signupFormHandler(event) {
           alert(response.statusText);
         }
       }
-    }
+}
   
   document.querySelector('.create-form').addEventListener('submit', signupFormHandler);

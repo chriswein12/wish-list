@@ -6,11 +6,12 @@ const sequelize = require('../config/connection');
 // creating wishlist model
 class Items extends Model { }
 
-// creating new Whislist instance
+// creating new Wishlist instance
 Items.init(
     {
         id: {
             type: DataTypes.INTEGER,
+            allowNull: false,
             primaryKey: true,
             autoIncrement: true
         },
@@ -29,21 +30,20 @@ Items.init(
         },
         purchase_location: {
             type: DataTypes.STRING,
-            allowNull: true
+            // allowNull: true
         },
         link: {
             type: DataTypes.STRING,
-            allowNull: true,
+            // allowNull: true,
             validate: { isUrl: true }
         },
         description: {
             type: DataTypes.STRING,
-            allowNull: true
+            // allowNull: true
         },
         wishlist_id: {
             // type: DataTypes.STRING,
             type: DataTypes.UUID,
-            allowNull: true,
             references: {
                 model: 'wishlists',
                 key: 'id'
