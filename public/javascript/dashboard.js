@@ -1,9 +1,11 @@
 async function newListHandler(event) {
   event.preventDefault();
-
+  
   const wishlist_name = document.querySelector('#list-name').value.trim();
-  const user_id=1;
-  //const user_id=req.session.user_id;
+  const script = document.querySelector("#dashboard-script")
+  const user_id = script.getAttribute('data-user')
+
+  console.log(user_id);
 
   if (wishlist_name) {
     const response = await fetch('/api/wishlists', {
