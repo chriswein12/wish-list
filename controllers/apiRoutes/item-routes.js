@@ -14,6 +14,7 @@ router.get('/', (req, res) => {
             'purchase_location',
             'link',
             'description',
+            'wishlist_id'
         ],
         include: [
             {
@@ -21,6 +22,8 @@ router.get('/', (req, res) => {
                 attributes: [
                     'id',
                     'wishlist_name',
+                    'event_date',
+                    'user_id'
                 ]
             }
         ]
@@ -45,6 +48,7 @@ router.get('/:id', (req, res) => {
             'purchase_location',
             'link',
             'description',
+            'wishlist_id'
         ],
         include: [
             {
@@ -52,6 +56,8 @@ router.get('/:id', (req, res) => {
                 attributes: [
                     'id',
                     'wishlist_name',
+                    'event_date',
+                    'user_id'
                 ]
             }
         ]

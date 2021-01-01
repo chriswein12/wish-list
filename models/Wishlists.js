@@ -4,11 +4,10 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 const { current_year } = require('../utils/helpers.js')
 
-
 // creating wishlist model
-class Wishlists extends Model { }
+class Wishlists extends Model {}
 
-// creating new Whislist instance; 
+// creating new Wishlist instance; 
 Wishlists.init(
   {
     id: {
@@ -34,7 +33,7 @@ Wishlists.init(
       validation: {
         isDate: true
       },
-      allowNull: true
+      // allowNull: true
     },
     user_id: {
       type: DataTypes.INTEGER,
