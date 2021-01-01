@@ -9,14 +9,13 @@ router.get('/', (req, res) => {
     console.log('route returns dashboard')
     Wishlists.findAll({
         where: {
-           user_id: req.session.user_id
+            user_id: req.session.user_id
         },
         attributes: [
             'id',
             'wishlist_name',
             // 'event_date',
             'user_id'
-
         ],
         include: [
             {

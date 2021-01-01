@@ -26,6 +26,7 @@
         {{#each lists as |list|}}
           <div class="card">
             <h3 class="card-title">{{list.wishlist_name}}</h3>
+            <button class="btn"><a href="/wishlist/{{list.id}}">Edit Wishlist</a></button>
           </div>
         {{/each}}
       </div>
