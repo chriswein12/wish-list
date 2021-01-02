@@ -4,7 +4,7 @@
   </div>
 </section>
 
-<div class="container item-form-container">
+<div class="container item-form-container mb-5">
   <form class="add-item-form">
     <div class="form-row">
       <div class="form-group col-md-3">
@@ -35,26 +35,24 @@
   </form>
 </div>
 
-<h2>{{listData.wishlist_name}}</h2>
+<h2 class="text-center">{{listData.wishlist_name}}</h2>
 
-<section>
-  <div class="accordion" id="list">
+<section class="container">
+  <div class="accordion" id="items-list">
     {{#each listData.items }}
-    <div class='accordion-item'>
-      <h3 class="accordian-header" id="header-{{id}}">
-        <button class="accordian-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-          aria-expanded="true" aria-controls="collapseOne">
-          {{item_name}}
-        </button>
-      </h3>
-      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="header-{{id}}"
-        data-bs-parent="#list">
-        <div class="accordian-body">
-          <ul>
-            <li>Price: ${{price}}</li>
-            <li>Description: {{description}}</li>
-            <li>Buy at: <a href="{{link}}">{{purchase_location}}</a></li>
-          </ul>
+    <div class='card'>
+      <div class="card-header bg-white" id="heading{{id}}">
+        <h3 class="mb-0">
+          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse{{id}}" aria-expanded="false" aria-controls="collapse{{id}}">
+            {{item_name}}
+          </button>
+        </h3>
+      </div>  
+      <div id="collapse{{id}}" class="collapse" aria-labelledby="heading{{id}}" data-parent="#items-list">
+        <div class="card-body">
+            <p>Price: ${{price}}</p>
+            <p>Buy at: <a href="{{link}}">{{purchase_location}}</a></p>
+            <p>Description: {{description}}</p>
         </div>
       </div>
     </div>
