@@ -1,4 +1,4 @@
-# CryptoCalc
+# 12 Wishes
 
 ## Description of the Website
 This website is designed to create and share wishlists among clients who are in a group. 
