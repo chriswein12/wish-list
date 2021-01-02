@@ -24,16 +24,25 @@ nav a:hover {
   text-decoration: none;
 }
 
+#christmas {
+  position: fixed;
+  left: 0;
+  top: -50%;
+  min-width: 100%;
+  min-height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: -9999;
+}
+
 .brand-name {
   font-family: Pacifico;
-  color: #0289FF;
+  color: #124a7e;
   font-size: 40px;
-  margin-left: 20px;
 }
 
 .tagline {
-  margin-left: 20px;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
   font-size: 30px;
 }
 
@@ -41,6 +50,7 @@ nav a:hover {
   border: 2px solid #0289FF;
   border-radius: 10px;
   box-shadow: 0 8px 16px 0 rgba(35, 35, 35, 0.315);
+  background-color: rgba(255, 255, 255, 0.6);
 }
 
 .steps-container-padding {
@@ -51,11 +61,16 @@ nav a:hover {
   padding: 10px 15px;
 }
 
+.steps-subtitle {
+  color: #0289FF;
+}
+
 .fa-check {
   color: #0289FF;
 }
 
-span {
+.steps {
+  font-size: 20px;
   color: black;
 }
 
@@ -66,6 +81,8 @@ span {
 .create-form {
   margin-top: 30px;
   box-shadow: 0 8px 16px 0 rgba(35, 35, 35, 0.315);
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
 }
 
 .create-title {
@@ -92,6 +109,10 @@ span {
 
 .new-list-title h3 {
   font-size: 16px;
+}
+
+.btn-primary {
+  background-color: #0289FF;
 }
 
 /*# sourceMappingURL=style.css.map */

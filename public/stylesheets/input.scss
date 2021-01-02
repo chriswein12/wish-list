@@ -1,4 +1,5 @@
 $primary-color: #0289FF;
+$secondary-color: rgb(18, 74, 126);
 $default-shadow: 0 8px 16px 0 rgba(35, 35, 35, 0.315);
 
 header {
@@ -30,16 +31,28 @@ nav {
     }
 }
 
+#christmas {
+    position: fixed; 
+    left: 0; 
+    top: -50%;
+      
+    min-width: 100%;
+    min-height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: -9999;
+}
+
 .brand-name {
     font-family: Pacifico;
-    color: $primary-color;
+    color: $secondary-color;
     font-size: 40px;
-    margin-left: 20px;
+    // margin-left: 20px;
 }
 
 .tagline {
-    margin-left: 20px;
-    margin-bottom: 15px;
+    // margin-left: 20px;
+    margin-bottom: 30px;
     font-size: 30px;
 }
 
@@ -47,6 +60,7 @@ nav {
     border: 2px solid $primary-color;
     border-radius: 10px;
     box-shadow: $default-shadow;
+    background-color: rgba(255, 255, 255, 0.6) ;
 }
 
 .steps-container-padding {
@@ -57,11 +71,16 @@ nav {
     padding: 10px 15px;
 }
 
+.steps-subtitle {
+    color: $primary-color;
+}
+
 .fa-check {
     color: $primary-color;
 }
 
-span {
+.steps {
+    font-size: 20px;
     color: black;
 }
 
@@ -73,6 +92,8 @@ span {
     @extend %form-wrapper;
     margin-top: 30px;
     box-shadow: $default-shadow;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
 }
 
 .login-form {
@@ -105,4 +126,8 @@ span {
 
 .new-list-title h3 {
     font-size: 16px;
+}
+
+.btn-primary {
+    background-color: $primary-color;
 }
