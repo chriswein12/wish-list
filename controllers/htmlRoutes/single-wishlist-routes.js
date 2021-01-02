@@ -85,7 +85,9 @@ router.get('/:id', (req, res) => {
             console.log("ID: ", dbWishlistData.id);
             const listData = dbWishlistData.get({ plain: true });
             // console.log('listData.items[0]: ', listData.items[0])
-            res.render('wishlist', { listData })
+            res.render('wishlist', { 
+                listData, 
+                loggedIn: req.session.loggedIn })
             // res.render('wishlist', { listData, loggedIn: req.session.loggedIn}) 
         })
         .catch(err => {

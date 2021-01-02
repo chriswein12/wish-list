@@ -39,21 +39,21 @@
 
 <section>
   <div class="accordion" id="list">
-    {{#each listData as |item|}}
+    {{#each listData.items }}
     <div class='accordion-item'>
-      <h3 class="accordian-header" id="header-{{item.id}}">
+      <h3 class="accordian-header" id="header-{{id}}">
         <button class="accordian-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
           aria-expanded="true" aria-controls="collapseOne">
-          {{item.item_name}}
+          {{item_name}}
         </button>
       </h3>
-      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="header-{{item.id}}"
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="header-{{id}}"
         data-bs-parent="#list">
         <div class="accordian-body">
           <ul>
-            <li>Price: {{item.price}}</li>
-            <li>Description: {{item.description}}</li>
-            <li>Buy at: <a href="{{item.link}}">{{item.purchase_location}}</a></li>
+            <li>Price: ${{price}}</li>
+            <li>Description: {{description}}</li>
+            <li>Buy at: <a href="{{link}}">{{purchase_location}}</a></li>
           </ul>
         </div>
       </div>
