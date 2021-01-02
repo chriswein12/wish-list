@@ -22,7 +22,7 @@ Wishlists.hasMany(Items, {
 });
 
 Items.belongsTo(Wishlists, {
-    constraints: false,
+    // constraints: false,
     foreignKey: 'wishlists_id',
     onDelete: 'SET NULL'
 });
