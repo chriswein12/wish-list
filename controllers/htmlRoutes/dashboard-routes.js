@@ -6,6 +6,10 @@ const { Wishlists, Users } = require('../../models');
 
 // returns dashboard
 router.get('/', (req, res) => {
+    if (!req.session.loggedIn) {
+        res.redirect('/');
+        return;
+    }
     console.log('route returns dashboard')
     Wishlists.findAll({
         where: {
