@@ -30,11 +30,11 @@ Items.init(
         },
         purchase_location: {
             type: DataTypes.STRING,
-            // allowNull: true
+            allowNull: false
         },
         link: {
             type: DataTypes.STRING,
-            // allowNull: true,
+            allowNull: true,
             validate: { isUrl: true }
         },
         description: {

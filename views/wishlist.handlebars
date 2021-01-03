@@ -52,11 +52,11 @@
 
   <section class="container">
     <div class="accordion" id="items-list">
-    {{#if userCheck}}  
-    {{> creator-list listData}}
-    {{else}}
-    {{> outside-view listData}}
-    {{/if}}
+      {{#if userCheck}}
+      {{> creator-list listData}}
+      {{else}}
+      {{> outside-view listData}}
+      {{/if}}
     </div>
   </section>
 </div>

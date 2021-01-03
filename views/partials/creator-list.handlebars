@@ -11,8 +11,12 @@
   <div id="collapse{{id}}" class="collapse" aria-labelledby="heading{{id}}" data-parent="#items-list">
     <div class="card-body">
       <p>Price: ${{price}}</p>
+      {{#if purchase_location}}
       <p>Buy at: <a href="{{link}}">{{purchase_location}}</a></p>
+      {{/if}}
+      {{#if description}}
       <p>Description: {{description}}</p>
+      {{/if}}
       <div class="text-center">
         <button class="btn btn-secondary itemDeleteBtn" type="button" id="itemDeleteBtn-{{id}}">Delete
           Item</button>
