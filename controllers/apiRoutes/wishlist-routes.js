@@ -56,6 +56,7 @@ router.get('/:id', (req, res) => {
         .then(dbWishlistData => {
             if (!dbWishlistData) {
                 res.status(404).json({ message: 'No wishlist found with this id.' });
+                alert('No wishlist found with this id.')
                 return;
             }
             res.json(dbWishlistData);
@@ -96,6 +97,7 @@ router.put('/:id', withAuth, (req, res) => {
             if (!dbWishlistData) {
                 console.log('dbWishlistData: ', dbWishlistData)
                 res.status(404).json({ message: 'This id does not match any wishlists.' });
+                alert('This id does not match any wishlists.')
                 return;
             }
             res.json(dbWishlistData);
@@ -118,6 +120,7 @@ router.delete('/:id', withAuth, (req, res) => {
         .then(dbWishlist => {
             if (!dbWishlist) {
                 res.status(404).json({ message: 'No wishlist found with this id.' });
+                alert('No wishlist found with this id.')
                 return;
             }
             res.json(dbWishlist);

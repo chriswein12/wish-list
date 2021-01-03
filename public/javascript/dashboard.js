@@ -16,9 +16,7 @@ async function newListHandler(event) {
       }),
       headers: { 'Content-Type': 'application/json' }
     });
-    console.log(response);
     if (response.ok) {
-      console.log('success');
       document.location.reload;
     } else{
       alert(response.statusText);

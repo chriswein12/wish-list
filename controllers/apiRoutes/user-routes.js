@@ -36,6 +36,7 @@ router.get('/:id', (req, res) => {
         .then(dbUserData => {
             if (!dbUserData) {
                 res.status(404).json({ message: 'No user with this id was found.' });
+                alert('No user with this id was found.');
                 return;
             }
             res.json(dbUserData);
@@ -83,6 +84,7 @@ router.post('/login', (req, res) => {
         console.log('dbUserData.dataValues.id: ', dbUserData.dataValues.id);
         if (!dbUserData) {
             res.status(400).json({ message: 'No user with that email address was found.' });
+            alert('No user with that email address was found.')
             return;
         }
         const validPassword = dbUserData.checkPassword(req.body.password);
@@ -90,6 +92,7 @@ router.post('/login', (req, res) => {
 
         if (!validPassword) {
             res.status(400).json({ message: 'The password you entered is incorrect.' });
+            alert('The password you entered is incorrect.')
             return;
         }
         req.session.save(() => {
