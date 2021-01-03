@@ -2,6 +2,10 @@ $primary-color: #0289FF;
 $secondary-color: rgb(18, 74, 126);
 $default-shadow: 0 8px 16px 0 rgba(35, 35, 35, 0.315);
 
+// body {
+//     height: 100%;
+// }
+
 header {
     background-color: var(--primary);
     width: 100%;
@@ -100,7 +104,6 @@ nav {
     @extend %form-wrapper;
 }
 
-
 .create-title {
     background-color: $primary-color;
     color: white;
@@ -130,4 +133,17 @@ nav {
 
 .btn-primary {
     background-color: $primary-color;
+}
+
+.addItemBtn {
+    box-shadow: $default-shadow;
+    padding: 10px 10vw 10px 10vw;
+}
+
+.wishlist-main {
+    background-color: white;
+    // height: 100vh;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: $default-shadow;
 }

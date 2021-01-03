@@ -16,13 +16,14 @@ async function loginFormHandler(event) {
 
       console.log(response);
       if (response.ok) {
-      // debugger
+        console.log(document.location);
+        if (document.location.pathname === "/" ){
+          document.location.replace('/dashboard');
+        }
+        document.location.replace(document.location);
 
-        let test = response;
-        console.log(test);
-        document.location.replace('/dashboard');
       } else {
-        alert(response.statusText);
+        alert("Please check your email and password and try again.")
       }
     }
   }
