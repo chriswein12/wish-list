@@ -115,4 +115,9 @@ nav a:hover {
   background-color: #0289FF;
 }
 
+.addItemBtn {
+  box-shadow: 0 8px 16px 0 rgba(35, 35, 35, 0.315);
+  padding: 10px 10vw 10px 10vw;
+}
+
 /*# sourceMappingURL=style.css.map */

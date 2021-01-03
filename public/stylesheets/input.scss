@@ -100,7 +100,6 @@ nav {
     @extend %form-wrapper;
 }
 
-
 .create-title {
     background-color: $primary-color;
     color: white;
@@ -130,4 +129,9 @@ nav {
 
 .btn-primary {
     background-color: $primary-color;
+}
+
+.addItemBtn {
+    box-shadow: $default-shadow;
+    padding: 10px 10vw 10px 10vw;
 }
