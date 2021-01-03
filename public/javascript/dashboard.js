@@ -17,7 +17,7 @@ async function newListHandler(event) {
     console.log(response);
     if (response.ok) {
       console.log('success');
-      document.location.reload;
+      document.location.replace(document.location);
     } else{
       alert(response.statusText);
     }
