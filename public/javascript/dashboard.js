@@ -4,6 +4,7 @@ async function newListHandler(event) {
   const wishlist_name = document.querySelector('#list-name').value.trim();
   const script = document.querySelector("#dashboard-script")
   const user_id = script.getAttribute('data-user')
+  // const event_date = document.querySelector('event-date').value.trim();)
 
   console.log(user_id);
 
@@ -12,7 +13,8 @@ async function newListHandler(event) {
       method: 'post',
       body: JSON.stringify({
         user_id,
-        wishlist_name
+        wishlist_name,
+        event_date
       }),
       headers: { 'Content-Type': 'application/json' }
     });

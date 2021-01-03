@@ -33,7 +33,6 @@ Wishlists.init(
       validation: {
         isDate: true
       },
-      // allowNull: true
     },
     user_id: {
       type: DataTypes.INTEGER,
