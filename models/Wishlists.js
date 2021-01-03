@@ -20,20 +20,20 @@ Wishlists.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        is: ['^[a-zA-Z0-9_ ]+$', 'i'],
+        is: ['^[a-zA-Z0-9_ \']+$', 'i'],
         len: [1, 25]
       }
     },
     event_date: {
       type: DataTypes.DATEONLY,
-      // returns default value: 'YYYY-12-25',
-      defaultValue: function () {
-        return current_year()
-      },
-      validation: {
-        isDate: true
-      },
-      // allowNull: true
+      allowNull: true,
+      // validation: {
+      //   isDate: true
+      // }
+      // returns default value: 'YYYY-12-25' (possible),
+      // defaultValue: function () {
+      //   return current_year()
+      // },
     },
     user_id: {
       type: DataTypes.INTEGER,
