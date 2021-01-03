@@ -18,11 +18,8 @@ async function signupFormHandler(event) {
         headers: { 'Content-Type': 'application/json' }
       });
       if (response.ok) {
-        console.log('success');
         document.location.replace('/dashboard/');
       } else {
-        console.log(response.statusText);
-        // alert(response.statusText);
         alert("Please check your information and try again.")
       }
     }
