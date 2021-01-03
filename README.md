@@ -40,18 +40,18 @@ https://twelve-wishes.herokuapp.com/
 
 ## How the Website Looks on a Computer Display
 
-![.gif of full-screen website](./assets/gifs/full-screen-cryptocalc.gif)
+
 
 <br/>
 
 ## How the Website Looks on a Mobile Display
 
-![.gif of full-screen website](./assets/gifs/mobile-screen-cryptocalc.gif)
+
 
 <br/>
 
 ## Website Limitations
-* We are currently limited by the API calls only allowing us to obtain data from two years ago for free, as well as only allowing a limited amount of fetch requests per minute and per day.
+* 
 
 <br/>
 
