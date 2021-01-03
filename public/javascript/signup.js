@@ -21,8 +21,13 @@ async function signupFormHandler(event) {
         console.log('success');
         document.location.replace('/dashboard/');
       } else {
-        alert(response.statusText);
+        console.log(response.statusText);
+        // alert(response.statusText);
+        alert("Please check your information and try again.")
       }
+    }
+    else {
+      alert("Your passwords do not match.")
     }
   }
 }

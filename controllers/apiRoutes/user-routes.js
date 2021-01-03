@@ -1,9 +1,11 @@
 const router = require('express').Router();
+// const bcrypt = require('bcrypt');
 const { Users, Wishlists, Items } = require('../../models');
 // linking auth
 // const withAuth = require('../../utils/auth');
 
 // returns all users
+// mark for eventual removal
 router.get('/', (req, res) => {
     Users.findAll()
         .then(dbUserData => res.json(dbUserData))
@@ -46,6 +48,7 @@ router.get('/:id', (req, res) => {
 
 // creates a new user
 router.post('/', (req, res) => {
+    // console.log('req.body: ', req.body)
     Users.create({
         username: req.body.username,
         email: req.body.email,
@@ -83,6 +86,7 @@ router.post('/login', (req, res) => {
             return;
         }
         const validPassword = dbUserData.checkPassword(req.body.password);
+        // const validPassword = bcrypt.checkPassword(password, hashedPassword);
 
         if (!validPassword) {
             res.status(400).json({ message: 'The password you entered is incorrect.' });

@@ -7,5 +7,5 @@ module.exports = {
         const thisXmas = thisYear[3]+'-12-25'
 
         return thisXmas
-    }
+    } 
 }
