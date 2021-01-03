@@ -1,20 +1,25 @@
+<img src="/assets/images/blue_christmas.jpg" id="christmas" alt="" />
+
 <section>
-  <div class="container-fluid">
-    <h2>{{username}}'s Wish Lists</h2>
+  <div class="container wishlist-main container-fluid">
 
     <div class="mb-4">
       <div class="container text-center container-fluid">
-        <button class="btn btn-primary btn-lg mb-2 addItemBtn" type="button" data-toggle="collapse"
-          data-target="#addWishlistForm" aria-expanded="false" aria-controls="addWishlistForm">
-          Add New Wishlist
-        </button>
+        <div class="row justify-content-between">
+          <h2 class="dashboard-heading">{{username}}'s Wish Lists</h2>
+          <button class="btn btn-primary btn-lg mb-2 " type="button" data-toggle="collapse"
+            data-target="#addWishlistForm" aria-expanded="false" aria-controls="addWishlistForm">
+            + Add New Wishlist
+          </button>
+        </div>
       </div>
+
       <div class="collapse" id="addWishlistForm">
         <div class="container item-form-container mb-5">
-          <form class="add-item-form">
+          <form class="new-list-form">
             <div class="form-group">
-              <label for="wishlist-name">Wishlist Name</label>
-              <input type="text" class="form-control" id="wishlist-name" placeholder="Enter new Wishlist Name">
+              <label for="list-name">Wishlist Name</label>
+              <input type="text" class="form-control" id="list-name" placeholder="Enter new Wishlist Name">
             </div>
             <div class="form-group">
               <label for="event-date">Event Date</label>
@@ -29,49 +34,58 @@
       </div>
     </div>
 
-  </div>
+    {{#if lists}}
+    <section>
+      <div class="container">
+        <div class="text-center card-columns">
+          {{#each lists as |list|}}
+          <a href="/wishlist/{{list.id}}">
+            <div class="card bg-light mb-3 wishlist-card" style="width: 18rem;">
 
-</section>
+              <h3 class="card-title p-2">{{list.wishlist_name}}</h3>
+              <i class="fas fa-gifts"></i>
+          </a>
+          <button class="btn share-btn" data-toggle="modal" data-target="#shareModal-{{list.id}}"><i
+              class="fas fa-share-alt"></i> Share</button>
+        </div>
 
-{{#if lists}}
-<section>
-  <div class="container">
-    <div class="row align-items-stretch justify-content-start card-deck">
-      {{#each lists as |list|}}
-      <div>
-        <a href="/wishlist/{{list.id}}">
-          <div class="card">
-            <h3 class="card-title">{{list.wishlist_name}}</h3>
-          </div>
-        </a>
-        <button class="btn" data-toggle="modal" data-target="#shareModal-{{list.id}}">Share</button>
-      </div>
 
-      <!-- Modal -->
-      <div class="modal fade" id="shareModal-{{list.id}}" tabindex="-1" role="dialog" aria-labelledby="shareModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h3>Share Wishlist: {{list.wishlist_name}}</h3>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <p>https://twelve-wishes.herokuapp.com/wishlist/{{list.id}}</p>
-            </div>
-            <div class="modal-footer">
-              <p>Copy the link above to share this list with your friends and family!</p>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- Modal -->
+        <div class="modal fade" id="shareModal-{{list.id}}" tabindex="-1" role="dialog"
+          aria-labelledby="shareModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header share-header">
+                <h3>Share Wishlist: {{list.wishlist_name}}</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p>Copy the link below to share this list with your friends and family!</p>
+                <hr>
+                <div class="bg-light url-generator">
+                  <p id="share-url">https://twelve-wishes.herokuapp.com/wishlist/{{list.id}}</p>
+                  {{!-- <button class="btn copy-btn" id="copy-button" data-clipboard-target="#share-url">Copy</button> --}}
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
             </div>
           </div>
         </div>
+        {{/each}}
       </div>
-      {{/each}}
-    </div>
   </div>
 </section>
 {{/if}}
 
+</div>
+
+</section>
+
+
+
 <script src="/javascript/dashboard.js" data-user={{user_id}} id="dashboard-script"></script>
+<script src="/javascript/clipboard.min.js"></script>

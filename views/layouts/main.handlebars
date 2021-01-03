@@ -20,7 +20,10 @@
                 12Wishes
             </a>
             {{#if loggedIn}}
-            <button id="logout" class="btn">Logout</button>
+            <div>
+            <a href="/dashboard"><i class="fas fa-user"></i> {{username}}</a>
+            <button id="logout" class="btn btn-outline-light logout-btn">Logout</button>
+            </div>
             {{else}}
             <a href="/login" data-toggle="modal" data-target="#loginModal">Login</a>
             {{/if}}
