@@ -5,8 +5,6 @@ async function newListHandler(event) {
   const script = document.querySelector("#dashboard-script")
   const user_id = script.getAttribute('data-user')
 
-  console.log(user_id);
-
   if (wishlist_name) {
     const response = await fetch('/api/wishlists', {
       method: 'post',
@@ -17,7 +15,8 @@ async function newListHandler(event) {
       headers: { 'Content-Type': 'application/json' }
     });
     if (response.ok) {
-      document.location.reload;
+      console.log('success');
+      document.location.replace(document.location);
     } else{
       alert(response.statusText);
     }
