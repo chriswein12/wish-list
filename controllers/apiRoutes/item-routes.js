@@ -127,10 +127,10 @@ router.delete('/:id', withAuth, (req, res) => {
     })
         .then(dbItemData => {
             if (!dbItemData) {
-                res.status(404).json({ message: 'This id doen not match any items.' });
+                res.status(404).json({ message: 'This id does not match any items.' });
                 return;
             }
-            res.json(dbItem);
+            res.json(dbItemData);
         })
         .catch(err => {
             console.log(err);
