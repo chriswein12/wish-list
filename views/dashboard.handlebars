@@ -37,52 +37,51 @@
     {{#if lists}}
     <section>
       <div class="container">
-        <div class="text-center card-columns">
+        <div class="row justify-content-center text-center card-columns">
           {{#each lists as |list|}}
-          <a href="/wishlist/{{list.id}}">
-            <div class="card bg-light mb-3 wishlist-card" style="width: 18rem;">
+          <div class="card bg-light mb-3 wishlist-card" style="width: 18rem;">
+            <a href="/wishlist/{{list.id}}">
+            <h3 class="card-title p-2">{{list.wishlist_name}}</h3>
+            {{!-- <h4 class='card-title p-2'>{{list.event_date}}</h4> --}}
+            <i class="fas fa-gifts"></i>
+            </a>
+            <button class="btn share-btn" data-toggle="modal" data-target="#shareModal-{{list.id}}"><i
+                class="fas fa-share-alt"></i> Share</button>
+          </div>
 
-              <h3 class="card-title p-2">{{list.wishlist_name}}</h3>
-              {{!-- <h4 class='card-title p-2'>{{list.event_date}}</h4> --}}
-              <i class="fas fa-gifts"></i>
-          </a>
-          <button class="btn share-btn" data-toggle="modal" data-target="#shareModal-{{list.id}}"><i
-              class="fas fa-share-alt"></i> Share</button>
-        </div>
 
-
-        <!-- Modal -->
-        <div class="modal fade" id="shareModal-{{list.id}}" tabindex="-1" role="dialog"
-          aria-labelledby="shareModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-              <div class="modal-header share-header">
-                <h3>Share Wishlist: {{list.wishlist_name}}</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <p>Copy the link below to share this list with your friends and family!</p>
-                <hr>
-                <div class="bg-light url-generator">
-                  <p id="share-url">https://twelve-wishes.herokuapp.com/wishlist/{{list.id}}</p>
-                  {{!-- <button class="btn copy-btn" id="copy-button" data-clipboard-target="#share-url">Copy</button> --}}
+          <!-- Modal -->
+          <div class="modal fade" id="shareModal-{{list.id}}" tabindex="-1" role="dialog"
+            aria-labelledby="shareModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header share-header">
+                  <h3>Share Wishlist: {{list.wishlist_name}}</h3>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
                 </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <div class="modal-body">
+                  <p>Copy the link below to share this list with your friends and family!</p>
+                  <hr>
+                  <div class="bg-light url-generator">
+                    <p id="share-url">https://twelve-wishes.herokuapp.com/wishlist/{{list.id}}</p>
+                    {{!-- <button class="btn copy-btn" id="copy-button" data-clipboard-target="#share-url">Copy</button> --}}
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
               </div>
             </div>
           </div>
+          {{/each}}
         </div>
-        {{/each}}
       </div>
-  </div>
-</section>
-{{/if}}
+    </section>
+    {{/if}}
 
-</div>
+  </div>
 
 </section>
 
