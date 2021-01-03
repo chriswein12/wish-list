@@ -50,6 +50,13 @@
   <h2 class="text-center">{{listData.wishlist_name}}</h2>
   <p class="text-center">A wishlist by {{listData.user.username}}</p>
 
+  {{#if userCheck}}
+  <div class="text-center mb-2">
+    <button class="btn" data-toggle="modal" data-target="#shareModal"><i class="fas fa-share-alt"></i>
+      Share</button>
+  </div>
+  {{/if}}
+
   <section class="container">
     <div class="accordion" id="items-list">
       {{#if userCheck}}
@@ -59,7 +66,42 @@
       {{/if}}
     </div>
   </section>
+
+  {{#if userCheck}}
+  <div class="text-center">
+    <button class="btn btn-secondary listDeleteBtn" type="button" id="listDeleteBtn-{{id}}">Delete
+      Wishlist</button>
+  </div>
+  {{/if}}
 </div>
+
+{{!-- Modal for share button --}}
+<div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="shareModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header share-header">
+        <h3>Share Wishlist: {{listData.wishlist_name}}</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Copy the link below to share this list with your friends and family!</p>
+        <hr>
+        <div class="bg-light url-generator">
+          <p id="share-url">https://twelve-wishes.herokuapp.com/wishlist/{{listData.id}}</p>
+          {{!-- <button class="btn copy-btn" id="copy-button" data-clipboard-target="#share-url">Copy</button> --}}
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <script src="/javascript/singleWishlist.js"></script>
 <script src="/javascript/delete-item.js"></script>
+<script src="/javascript/delete-list.js"></script>

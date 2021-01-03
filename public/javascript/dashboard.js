@@ -23,6 +23,9 @@ async function newListHandler(event) {
       alert(response.statusText);
     }
   }
+  else {
+    alert("Please enter in a wishlist name")
+  }
 }
 
 // new ClipboardJS('.btn', {
