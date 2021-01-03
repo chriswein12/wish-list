@@ -59,7 +59,17 @@
       {{/if}}
     </div>
   </section>
+
+  {{#if userCheck}}
+  <div class="text-center">
+    <button class="btn btn-secondary listDeleteBtn" type="button" id="listDeleteBtn-{{id}}">Delete
+      Wishlist</button>
+  </div>
+  {{/if}}
 </div>
+
+
 
 <script src="/javascript/singleWishlist.js"></script>
 <script src="/javascript/delete-item.js"></script>
+<script src="/javascript/delete-list.js"></script>
