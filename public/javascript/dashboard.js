@@ -22,4 +22,9 @@ async function newListHandler(event) {
     }
   }
 }
+
+// new ClipboardJS('.btn', {
+//   container: document.getElementById('url-modal')
+// });
+
 document.querySelector('.new-list-form').addEventListener('submit', newListHandler);

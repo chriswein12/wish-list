@@ -52,6 +52,7 @@ router.get('/:id', (req, res) => {
             res.render('wishlist', { 
                 listData, 
                 loggedIn: req.session.loggedIn,
+                username: req.session.username,
                 userCheck: userCheck(req.session.user_id, dbWishlistData.user_id)
              })
             // res.render('wishlist', { listData, loggedIn: req.session.loggedIn}) 

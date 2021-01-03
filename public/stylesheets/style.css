@@ -120,11 +120,36 @@ nav a:hover {
   padding: 10px 10vw 10px 10vw;
 }
 
+.logout-btn {
+  margin-left: 20px;
+}
+
 .wishlist-main {
   background-color: white;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 8px 16px 0 rgba(35, 35, 35, 0.315);
+}
+
+.wishlist-card {
+  box-shadow: 0 8px 16px 0 rgba(35, 35, 35, 0.315);
+  border-radius: 10px;
+  height: 18rem;
+}
+
+.share-btn {
+  position: absolute;
+  bottom: 5px;
+  right: 0px;
+}
+
+.share-header {
+  border-bottom: none;
+  padding-bottom: 0px;
+}
+
+.fa-gifts {
+  font-size: 100px;
 }
 
 /*# sourceMappingURL=style.css.map */
