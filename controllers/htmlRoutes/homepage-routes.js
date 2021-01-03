@@ -26,6 +26,7 @@ router.get('/logout', (req, res) => {
 })
 
 // returns login/signup page or user’s dashboard if there’s an active session
+// check to see whether this is needed
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
         res.redirect('/dashboard');

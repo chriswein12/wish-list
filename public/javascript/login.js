@@ -1,9 +1,9 @@
 async function loginFormHandler(event) {
     event.preventDefault();
-  
+
     const email = document.querySelector('#email-login').value.trim();
     const password = document.querySelector('#password-login').value.trim();
-  
+
     if (email && password) {
       const response = await fetch('/api/users/login', {
         method: 'post',
@@ -15,8 +15,9 @@ async function loginFormHandler(event) {
       });
 
       console.log(response);
-  
       if (response.ok) {
+      // debugger
+
         let test = response;
         console.log(test);
         document.location.replace('/dashboard');
