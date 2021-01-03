@@ -1,78 +1,65 @@
-{{#if userCheck}}
-<div class="mb-4">
-  <div class="container text-center container-fluid">
-    <button class="btn btn-primary btn-lg mb-2 addItemBtn" type="button" data-toggle="collapse" data-target="#addItemForm"
-      aria-expanded="false" aria-controls="addItemForm">
-      Add Item to List
-    </button>
-  </div>
-  <div class="collapse" id="addItemForm">
-    <div class="container item-form-container mb-5">
-      <form class="add-item-form">
-        <div class="form-row">
-          <div class="form-group col-md-3">
-            <label for="item-name">Item Name</label>
-            <input type="text" class="form-control" id="item-name" placeholder="Item Name">
+<img src="/assets/images/blue_christmas.jpg" id="christmas" alt="" />
+
+<div class="wishlist-main container">
+  {{#if userCheck}}
+  <div class="mb-4">
+    <div class="container text-center container-fluid">
+      <button class="btn btn-primary btn-lg mb-2 addItemBtn" type="button" data-toggle="collapse"
+        data-target="#addItemForm" aria-expanded="false" aria-controls="addItemForm">
+        Add Item to List
+      </button>
+    </div>
+    <div class="collapse" id="addItemForm">
+      <div class="container item-form-container mb-5">
+        <form class="add-item-form">
+          <div class="form-row">
+            <div class="form-group col-md-3">
+              <label for="item-name">Item Name</label>
+              <input type="text" class="form-control" id="item-name" placeholder="Item Name">
+            </div>
+            <div class="form-group col-md-3">
+              <label for="price">Price</label>
+              <input type="number" min="0.01" step="any" class="form-control" id="price" placeholder="$">
+            </div>
+            <div class="form-group col-md-3">
+              <label for="retailer">Where to Buy:</label>
+              <input type="text" class="form-control" id="retailer" placeholder="Retailer">
+            </div>
+            <div class="form-group col-md-3">
+              <label for="weblink">Weblink</label>
+              <input type="url" class="form-control" id="weblink" placeholder="http://">
+            </div>
           </div>
-          <div class="form-group col-md-3">
-            <label for="price">Price</label>
-            <input type="number" min="0.01" step="any" class="form-control" id="price" placeholder="$">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="notes">Additional Details</label>
+              <textarea name="notes" class="form-control" id="notes"
+                placeholder="ie. Color, Size, Amount, etc."></textarea>
+            </div>
           </div>
-          <div class="form-group col-md-3">
-            <label for="retailer">Where to Buy:</label>
-            <input type="text" class="form-control" id="retailer" placeholder="Retailer">
-          </div>
-          <div class="form-group col-md-3">
-            <label for="weblink">Weblink</label>
-            <input type="url" class="form-control" id="weblink" placeholder="http://">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="notes">Additional Details</label>
-            <textarea name="notes" class="form-control" id="notes"
-              placeholder="ie. Color, Size, Amount, etc."></textarea>
-          </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Save</button>
-        <button class="btn btn-secondary">Cancel</button>
-      </form>
+          <button type="submit" class="btn btn-primary">Save</button>
+          <button class="btn btn-secondary">Cancel</button>
+        </form>
+      </div>
     </div>
   </div>
+  {{/if}}
+
+
+
+  <h2 class="text-center">{{listData.wishlist_name}}</h2>
+  <p class="text-center">A wishlist by {{listData.user.username}}</p>
+
+  <section class="container">
+    <div class="accordion" id="items-list">
+    {{#if userCheck}}  
+    {{> creator-list listData}}
+    {{else}}
+    {{> outside-view listData}}
+    {{/if}}
+    </div>
+  </section>
 </div>
-{{/if}}
-
-
-
-<h2 class="text-center">{{listData.wishlist_name}}</h2>
-<p class="text-center">A wishlist by {{listData.user.username}}</p>
-
-<section class="container">
-  <div class="accordion" id="items-list">
-    {{#each listData.items }}
-    <div class='card'>
-      <div class="card-header bg-white" id="heading{{id}}">
-        <h3 class="mb-0">
-          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse{{id}}"
-            aria-expanded="false" aria-controls="collapse{{id}}">
-            {{item_name}}
-          </button>
-        </h3>
-      </div>
-      <div id="collapse{{id}}" class="collapse" aria-labelledby="heading{{id}}" data-parent="#items-list">
-        <div class="card-body">
-          <p>Price: ${{price}}</p>
-          <p>Buy at: <a href="{{link}}">{{purchase_location}}</a></p>
-          <p>Description: {{description}}</p>
-          <div class="text-center">
-            <button class="btn btn-secondary itemDeleteBtn" type="button" id="itemDeleteBtn-{{id}}">Delete Item</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    {{/each}}
-  </div>
-</section>
 
 <script src="/javascript/singleWishlist.js"></script>
 <script src="/javascript/delete-item.js"></script>
