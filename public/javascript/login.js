@@ -17,9 +17,11 @@ async function loginFormHandler(event) {
       console.log(response);
   
       if (response.ok) {
-        let test = response;
-        console.log(test);
-        document.location.replace('/dashboard');
+        console.log(document.location);
+        if (document.location.pathname === "/" ){
+          document.location.replace('/dashboard');
+        }
+        document.location.replace(document.location);
       } else {
         alert(response.statusText);
       }
