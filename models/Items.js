@@ -19,7 +19,7 @@ Items.init(
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                is: ['^[a-zA-Z0-9_ ]+$', 'i'],
+                is: ['^[a-zA-Z0-9_ \']+$', 'i'],
                 len: [1, 25]
             }
         },
@@ -39,10 +39,8 @@ Items.init(
         },
         description: {
             type: DataTypes.STRING,
-            // allowNull: true
         },
         wishlist_id: {
-            // type: DataTypes.STRING,
             type: DataTypes.UUID,
             references: {
                 model: 'wishlists',
