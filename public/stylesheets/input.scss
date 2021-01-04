@@ -1,0 +1,180 @@
+$primary-color: #0289FF;
+$secondary-color: rgb(18, 74, 126);
+$default-shadow: 0 8px 16px 0 rgba(35, 35, 35, 0.315);
+
+// body {
+//     height: 100%;
+// }
+
+header {
+    background-color: var(--primary);
+    width: 100%;
+    box-shadow: $default-shadow;
+    margin-bottom: 30px;
+  }
+
+nav {
+    a{
+    color: white;
+    font-size: 20px;
+    margin: 0 10px 0 10px;
+    &:hover {
+        color: white;
+        text-decoration: underline;
+    }
+    }
+}
+
+.navbar-brand {
+    font-size: 30px;
+    font-family: Pacifico;
+    &:hover {
+        color: white;
+        text-decoration: none;
+        
+    }
+}
+
+#christmas {
+    position: fixed; 
+    left: 0; 
+    top: -50%;
+      
+    min-width: 100%;
+    min-height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: -9999;
+}
+
+.brand-name {
+    font-family: Pacifico;
+    color: $secondary-color;
+    font-size: 40px;
+    // margin-left: 20px;
+}
+
+.tagline {
+    // margin-left: 20px;
+    margin-bottom: 30px;
+    font-size: 30px;
+}
+
+.steps-container {
+    border: 2px solid $primary-color;
+    border-radius: 10px;
+    box-shadow: $default-shadow;
+    background-color: rgba(255, 255, 255, 0.6) ;
+}
+
+.steps-container-padding {
+    padding: 20px 40px;
+}
+
+.steps-list-padding {
+    padding: 10px 15px;
+}
+
+.steps-subtitle {
+    color: $primary-color;
+}
+
+.fa-check {
+    color: $primary-color;
+}
+
+.steps {
+    font-size: 20px;
+    color: black;
+}
+
+%form-wrapper {
+    border: 2px solid $primary-color;
+}
+
+.create-form {
+    @extend %form-wrapper;
+    margin-top: 30px;
+    box-shadow: $default-shadow;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+}
+
+.login-form {
+    @extend %form-wrapper;
+}
+
+.create-title {
+    background-color: $primary-color;
+    color: white;
+    padding: 5px;
+    border: 2px solid $primary-color;
+}
+
+.input-wrapper {
+    padding: 10px;
+}
+
+.create-account-btn {
+    margin-bottom: 30px;
+}
+
+
+.item-form-container {
+    border: 2px solid $primary-color;
+    box-shadow: $default-shadow;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.new-list-title h3 {
+    font-size: 16px;
+}
+
+.btn-primary {
+    background-color: $primary-color;
+}
+
+.addItemBtn {
+    box-shadow: $default-shadow;
+    padding: 10px 10vw 10px 10vw;
+}
+
+.logout-btn {
+    margin-left: 20px;
+}
+
+.wishlist-main {
+    background-color: white;
+    // height: 100vh;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: $default-shadow;
+}
+
+.wishlist-card {
+box-shadow: $default-shadow;
+border-radius: 10px;
+height: 18rem;
+
+}
+
+.share-btn {
+    position: absolute;
+    bottom: 5px;
+    right: 0px;
+}
+
+.share-header {
+    border-bottom: none;
+    padding-bottom: 0px;
+}
+
+.fa-gifts {
+    font-size: 100px;
+}
+
+.listDeleteBtn {
+    margin-top: 1.0em;
+  }
+

@@ -1,0 +1,19 @@
+{{#each this.items }}
+<div class='card'>
+  <div class="card-header bg-white" id="heading{{id}}">
+    <h3 class="mb-0">
+      <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse{{id}}"
+        aria-expanded="false" aria-controls="collapse{{id}}">
+        {{item_name}}
+      </button>
+    </h3>
+  </div>
+  <div id="collapse{{id}}" class="collapse" aria-labelledby="heading{{id}}" data-parent="#items-list">
+    <div class="card-body">
+      <p>Price: ${{price}}</p>
+      <p>Buy at: <a href="{{link}}" target="_blank">{{purchase_location}}</a></p>
+      <p>Description: {{description}}</p>
+    </div>
+  </div>
+</div>
+{{/each}}

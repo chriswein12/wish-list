@@ -1,0 +1,107 @@
+<img src="/assets/images/blue_christmas.jpg" id="christmas" alt="" />
+
+<div class="wishlist-main container">
+  {{#if userCheck}}
+  <div class="mb-4">
+    <div class="container text-center container-fluid">
+      <button class="btn btn-primary btn-lg mb-2 addItemBtn" type="button" data-toggle="collapse"
+        data-target="#addItemForm" aria-expanded="false" aria-controls="addItemForm">
+        Add Item to List
+      </button>
+    </div>
+    <div class="collapse" id="addItemForm">
+      <div class="container item-form-container mb-5">
+        <form class="add-item-form">
+          <div class="form-row">
+            <div class="form-group col-md-3">
+              <label for="item-name">Item Name</label>
+              <input type="text" class="form-control" id="item-name" placeholder="Item Name" required>
+            </div>
+            <div class="form-group col-md-3">
+              <label for="price">Price</label>
+              <input type="number" min="0.01" step="any" class="form-control" id="price" placeholder="$" required>
+            </div>
+            <div class="form-group col-md-3">
+              <label for="retailer">Where to Buy:</label>
+              <input type="text" class="form-control" id="retailer" placeholder="Retailer" required>
+            </div>
+            <div class="form-group col-md-3">
+              <label for="weblink">Weblink</label>
+              <input type="url" class="form-control" id="weblink" placeholder="http://">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="notes">Additional Details</label>
+              <textarea name="notes" class="form-control" id="notes"
+                placeholder="ie. Color, Size, Amount, etc."></textarea>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Save</button>
+          <button class="btn btn-secondary">Cancel</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  {{/if}}
+
+
+
+  <h2 class="text-center">{{listData.wishlist_name}}</h2>
+  <p class="text-center">A wishlist by {{listData.user.username}}</p>
+
+  {{#if userCheck}}
+  <div class="text-center mb-2">
+    <button class="btn mb-5" data-toggle="modal" data-target="#shareModal"><i class="fas fa-share-alt"></i>
+      Share</button>
+  </div>
+  {{/if}}
+
+  <section class="container">
+    <div class="accordion" id="items-list">
+      {{#if userCheck}}
+      {{> creator-list listData}}
+      {{else}}
+      {{> outside-view listData}}
+      {{/if}}
+    </div>
+  </section>
+
+  {{#if userCheck}}
+  <div class="text-center">
+    <button class="btn btn-secondary listDeleteBtn mt-5" type="button" id="listDeleteBtn-{{id}}">Delete
+      Wishlist</button>
+  </div>
+  {{/if}}
+</div>
+
+{{!-- Modal for share button --}}
+<div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="shareModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header share-header">
+        <h3>Share Wishlist: {{listData.wishlist_name}}</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Copy the link below to share this list with your friends and family!</p>
+        <hr>
+        <div class="bg-light url-generator">
+          <p id="share-url">https://twelve-wishes.herokuapp.com/wishlist/{{listData.id}}</p>
+          {{!-- <button class="btn copy-btn" id="copy-button" data-clipboard-target="#share-url">Copy</button> --}}
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="/javascript/singleWishlist.js"></script>
+<script src="/javascript/delete-item.js"></script>
+<script src="/javascript/delete-list.js"></script>

@@ -1,0 +1,159 @@
+header {
+  background-color: var(--primary);
+  width: 100%;
+  box-shadow: 0 8px 16px 0 rgba(35, 35, 35, 0.315);
+  margin-bottom: 30px;
+}
+
+nav a {
+  color: white;
+  font-size: 20px;
+  margin: 0 10px 0 10px;
+}
+nav a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.navbar-brand {
+  font-size: 30px;
+  font-family: Pacifico;
+}
+.navbar-brand:hover {
+  color: white;
+  text-decoration: none;
+}
+
+#christmas {
+  position: fixed;
+  left: 0;
+  top: -50%;
+  min-width: 100%;
+  min-height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: -9999;
+}
+
+.brand-name {
+  font-family: Pacifico;
+  color: #124a7e;
+  font-size: 40px;
+}
+
+.tagline {
+  margin-bottom: 30px;
+  font-size: 30px;
+}
+
+.steps-container {
+  border: 2px solid #0289FF;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px 0 rgba(35, 35, 35, 0.315);
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.steps-container-padding {
+  padding: 20px 40px;
+}
+
+.steps-list-padding {
+  padding: 10px 15px;
+}
+
+.steps-subtitle {
+  color: #0289FF;
+}
+
+.fa-check {
+  color: #0289FF;
+}
+
+.steps {
+  font-size: 20px;
+  color: black;
+}
+
+.login-form, .create-form {
+  border: 2px solid #0289FF;
+}
+
+.create-form {
+  margin-top: 30px;
+  box-shadow: 0 8px 16px 0 rgba(35, 35, 35, 0.315);
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
+}
+
+.create-title {
+  background-color: #0289FF;
+  color: white;
+  padding: 5px;
+  border: 2px solid #0289FF;
+}
+
+.input-wrapper {
+  padding: 10px;
+}
+
+.create-account-btn {
+  margin-bottom: 30px;
+}
+
+.item-form-container {
+  border: 2px solid #0289FF;
+  box-shadow: 0 8px 16px 0 rgba(35, 35, 35, 0.315);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.new-list-title h3 {
+  font-size: 16px;
+}
+
+.btn-primary {
+  background-color: #0289FF;
+}
+
+.addItemBtn {
+  box-shadow: 0 8px 16px 0 rgba(35, 35, 35, 0.315);
+  padding: 10px 10vw 10px 10vw;
+}
+
+.logout-btn {
+  margin-left: 20px;
+}
+
+.wishlist-main {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px 0 rgba(35, 35, 35, 0.315);
+}
+
+.wishlist-card {
+  box-shadow: 0 8px 16px 0 rgba(35, 35, 35, 0.315);
+  border-radius: 10px;
+  height: 18rem;
+}
+
+.share-btn {
+  position: absolute;
+  bottom: 5px;
+  right: 0px;
+}
+
+.share-header {
+  border-bottom: none;
+  padding-bottom: 0px;
+}
+
+.fa-gifts {
+  font-size: 100px;
+}
+
+.listDeleteBtn {
+  margin-top: 1em;
+}
+
+/*# sourceMappingURL=style.css.map */
