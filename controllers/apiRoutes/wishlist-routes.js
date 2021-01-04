@@ -95,14 +95,12 @@ router.put('/:id', withAuth, (req, res) => {
         })
         .then(dbWishlistData => {
             if (!dbWishlistData) {
-                console.log('dbWishlistData: ', dbWishlistData)
                 res.status(404).json({ message: 'This id does not match any wishlists.' });
                 alert('This id does not match any wishlists.')
                 return;
             }
             res.json(dbWishlistData);
         })
-        console.log('dbWishlistData: ', dbWishlistData)
 
         .catch(err => {
             console.log(err);
