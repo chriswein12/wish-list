@@ -1,5 +1,6 @@
 async function itemFormHandler(event) {
-    // event.preventDefault();
+
+    event.preventDefault();
     const item_name = document.querySelector('#item-name').value.trim();
     const price = document.querySelector('#price').value;
     const purchase_location = document.querySelector('#retailer').value.trim();
@@ -23,6 +24,7 @@ async function itemFormHandler(event) {
             headers: { 'Content-Type': 'application/json' }
         });
         if (response.ok) {
+            debugger;
             document.location.reload();
         } else {
             alert(response.statusText);
