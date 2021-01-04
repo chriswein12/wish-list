@@ -12,7 +12,6 @@ async function itemFormHandler(event) {
     console.log(item_name);
     console.log(link);
     console.log(wishlist_id);
-    debugger;
 
     if (item_name && price && purchase_location && wishlist_id) {
         const response = await fetch('/api/items', {
