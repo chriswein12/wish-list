@@ -20,7 +20,7 @@ Items.init(
             allowNull: false,
             validate: {
                 is: ['^[a-zA-Z0-9_ \']+$', 'i'],
-                len: [1, 25]
+                len: [1, 35]
             }
         },
         price: {
@@ -35,7 +35,6 @@ Items.init(
         link: {
             type: DataTypes.STRING,
             allowNull: true,
-            validate: { isUrl: true }
         },
         description: {
             type: DataTypes.STRING,

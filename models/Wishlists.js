@@ -20,7 +20,7 @@ Wishlists.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        is: ['^[a-zA-Z0-9_ \']+$', 'i'],
+        is: ['^[a-zA-Z0-9_ !\']+$', 'i'],
         len: [1, 25]
       }
     },

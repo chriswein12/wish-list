@@ -120,10 +120,6 @@ nav a:hover {
   padding: 10px 10vw 10px 10vw;
 }
 
-.listDeleteBtn {
-  margin-top: 1.0em;
-}
-
 .logout-btn {
   margin-left: 20px;
 }
@@ -154,6 +150,10 @@ nav a:hover {
 
 .fa-gifts {
   font-size: 100px;
+}
+
+.listDeleteBtn {
+  margin-top: 1em;
 }
 
 /*# sourceMappingURL=style.css.map */

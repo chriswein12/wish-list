@@ -15,15 +15,15 @@
           <div class="form-row">
             <div class="form-group col-md-3">
               <label for="item-name">Item Name</label>
-              <input type="text" class="form-control" id="item-name" placeholder="Item Name">
+              <input type="text" class="form-control" id="item-name" placeholder="Item Name" required>
             </div>
             <div class="form-group col-md-3">
               <label for="price">Price</label>
-              <input type="number" min="0.01" step="any" class="form-control" id="price" placeholder="$">
+              <input type="number" min="0.01" step="any" class="form-control" id="price" placeholder="$" required>
             </div>
             <div class="form-group col-md-3">
               <label for="retailer">Where to Buy:</label>
-              <input type="text" class="form-control" id="retailer" placeholder="Retailer">
+              <input type="text" class="form-control" id="retailer" placeholder="Retailer" required>
             </div>
             <div class="form-group col-md-3">
               <label for="weblink">Weblink</label>
@@ -49,6 +49,13 @@
   <h2 class="text-center">{{listData.wishlist_name}}</h2>
   <p class="text-center">A wishlist by {{listData.user.username}}</p>
 
+  {{#if userCheck}}
+  <div class="text-center mb-2">
+    <button class="btn mb-5" data-toggle="modal" data-target="#shareModal"><i class="fas fa-share-alt"></i>
+      Share</button>
+  </div>
+  {{/if}}
+
   <section class="container">
     <div class="accordion" id="items-list">
       {{#if userCheck}}
@@ -58,11 +65,42 @@
       {{/if}}
     </div>
   </section>
-</div>
 
+  {{#if userCheck}}
   <div class="text-center">
-    <button class="btn btn-secondary listDeleteBtn" type="button" id="listDeleteBtn-{{id}}">Delete
+    <button class="btn btn-secondary listDeleteBtn mt-5" type="button" id="listDeleteBtn-{{id}}">Delete
       Wishlist</button>
   </div>
+  {{/if}}
+</div>
+
+{{!-- Modal for share button --}}
+<div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="shareModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header share-header">
+        <h3>Share Wishlist: {{listData.wishlist_name}}</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Copy the link below to share this list with your friends and family!</p>
+        <hr>
+        <div class="bg-light url-generator">
+          <p id="share-url">https://twelve-wishes.herokuapp.com/wishlist/{{listData.id}}</p>
+          {{!-- <button class="btn copy-btn" id="copy-button" data-clipboard-target="#share-url">Copy</button> --}}
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <script src="/javascript/singleWishlist.js"></script>
+<script src="/javascript/delete-item.js"></script>
+<script src="/javascript/delete-list.js"></script>
