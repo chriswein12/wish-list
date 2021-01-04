@@ -9,10 +9,6 @@ async function itemFormHandler(event) {
     const rawId = window.location.toString().split('/')[window.location.toString().split('/').length - 1];
     const wishlist_id = rawId.slice(0, 36)
 
-    console.log(item_name);
-    console.log(link);
-    console.log(wishlist_id);
-
     if (item_name && price && purchase_location && wishlist_id) {
         const response = await fetch('/api/items', {
             method: 'post',

@@ -49,7 +49,6 @@ router.get('/:id', (req, res) => {
 
 // creates a new user
 router.post('/', (req, res) => {
-    // console.log('req.body: ', req.body)
     Users.create({
         username: req.body.username,
         email: req.body.email,
@@ -79,9 +78,6 @@ router.post('/login', (req, res) => {
             email: req.body.email
         }
     }).then(dbUserData => {
-        console.log('dbUserData: ', dbUserData);
-        console.log('dbUserData.id: ', dbUserData.id);
-        console.log('dbUserData.dataValues.id: ', dbUserData.dataValues.id);
         if (!dbUserData) {
             res.status(400).json({ message: 'No user with that email address was found.' });
             alert('No user with that email address was found.')
