@@ -48,10 +48,6 @@ https://twelve-wishes.herokuapp.com/
 
 
 
-<br/>
-
-## Website Limitations
-* 
 
 <br/>
 
