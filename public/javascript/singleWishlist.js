@@ -26,7 +26,6 @@ async function itemFormHandler(event) {
         if (response.ok) {
             debugger;
             document.location.reload();
-            // document.location.replace('/wishlist/' + wishlist_id);
         } else {
             alert(response.statusText);
         }
