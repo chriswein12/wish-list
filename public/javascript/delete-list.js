@@ -1,11 +1,13 @@
 async function deleteListHandler (event) {
     event.preventDefault();
   
-    //get item id
-    const button_id = event.target.id;
-    const id = button_id.split('-')[1];
+    // const button_id = event.target.id;
+    // const id = button_id.split('-')[1];
+    //get wishlist id
+    const rawId = window.location.toString().split('/')[window.location.toString().split('/').length - 1];
+    const id = rawId.slice(0, 36)
   
-    const response = await fetch(`/api/items/${id}`, {
+    const response = await fetch(`/api/wishlists/${id}`, {
       method: 'DELETE'
     });
     if (response.ok) {

@@ -46,7 +46,6 @@
   {{/if}}
 
 
-
   <h2 class="text-center">{{listData.wishlist_name}}</h2>
   <p class="text-center">A wishlist by {{listData.user.username}}</p>
 
@@ -61,5 +60,9 @@
   </section>
 </div>
 
+  <div class="text-center">
+    <button class="btn btn-secondary listDeleteBtn" type="button" id="listDeleteBtn-{{id}}">Delete
+      Wishlist</button>
+  </div>
+
 <script src="/javascript/singleWishlist.js"></script>
-<script src="/javascript/delete-item.js"></script>
